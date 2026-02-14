@@ -1,6 +1,7 @@
-# Aplicacion en desarrollo 🐳​
+Aplicación en desarrollo 🐳
 
-Hola coder, esta aplicacion a un esta en desarrollo, vuelve pronto. 
+Hola, coder.
+Esta aplicación aún está en desarrollo. Vuelve pronto.
 
-En esta app se aborda la curva de aprendizaje que llevo hasta ahora en react js. <b>Take a day off</b>, pronto estara para ti 👨‍💻🚀​
-
+En esta app se refleja la curva de aprendizaje que he recorrido hasta ahora en React JS.
+<b>Take a day off</b>, pronto estará lista para ti 👨‍💻🚀
