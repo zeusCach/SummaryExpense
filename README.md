@@ -1,4 +1,4 @@
-#Aplicación en desarrollo 🐳
+# Aplicación en desarrollo 🐳
 
 Hola, coder.
 Esta aplicación aún está en desarrollo. Vuelve pronto.
