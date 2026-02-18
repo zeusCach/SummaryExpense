@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+src/components/FormExpense.jsx
+src/components/FormExpense.jsx
+src/components/FormExpense.jsx
+src/components/Header.jsx
+src/components/Perfil.jsx
