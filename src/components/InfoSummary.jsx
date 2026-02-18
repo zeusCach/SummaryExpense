@@ -1,13 +1,15 @@
+import { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
 
 export default function InfoSummary() {
+    const { userName } = useContext(UserContext);
+
     return (
         <>
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-10 ">
 
-                <h1 className="text-white text-4xl font-bold text-center pb-5">
-                    Resumen de gastos
-                </h1>
+                <h1 className='text-white font-bold text-2xl px-5 py-10'>Hola {userName}, estos son tus numeros...</h1>
 
                 <div className="flex items-center gap-5 p-5">
                     <div className=" bg-green-400/30 backdrop-blur-xl border-white/10 rounded-2xl w-full max-w-2xs p-5">
