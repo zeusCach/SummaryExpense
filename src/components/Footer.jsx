@@ -2,7 +2,7 @@
 export default function () {
     return (
         <>
-            <footer className="bg-gray-800 p-10 mt-5">
+            <footer className="bg-neutral-800 p-5 mt-5">
                 <div className="flex flex-col items-center gap-3 md:flex-row md:justify-between">
                     <p className="text-slate-500 font-semibold text-lg">
                         &copy; {new Date().getFullYear()} SummaryExpense - Realizado con 🤟🏼 por

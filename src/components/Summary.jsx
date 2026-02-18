@@ -1,25 +1,20 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { expensesDB } from "../data/data"
-import InfoSummary from "./InfoSummary";
-import { UserContext } from "../context/userContext";
-
 
 
 export default function Summary() {
     const [db] = useState(expensesDB)
 
-    const { userName } = useContext(UserContext);
-    console.log(userName)
     return (
         <>
 
             <div className="w-full max-w-2xl mx-auto">
-
-                <h1 className='text-white font-bold text-2xl px-5 py-10'>Hola {userName}, comienza tu carrera</h1>
-
-                <InfoSummary />
-
                 <div className="pt-5" >
+                    <h1 className="text-white text-4xl font-bold pb-5">
+                        Resumen de gastos
+                    </h1>
+
+
                     {
                         db.map(item => (
                             <>
