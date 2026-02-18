@@ -51,7 +51,7 @@ export default function FormExpense() {
                         />
                     </div>
 
-                    <button className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+                    <button className="w-full bg-emerald-400 text-white font-semibold px-6 py-3.5 rounded-xl cursor-pointer">
                         Agregar Gasto
                     </button>
                 </form>
