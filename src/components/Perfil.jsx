@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { UserContext } from '../context/userContext';
 
 export default function Perfil() {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [userName, setUserName] = useState("Zeus Cach")
+    const { userName, setUserName } = useContext(UserContext);
 
     return (
         <>
