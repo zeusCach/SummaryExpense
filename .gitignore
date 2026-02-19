@@ -27,3 +27,5 @@ src/components/FormExpense.jsx
 src/components/FormExpense.jsx
 src/components/Header.jsx
 src/components/Perfil.jsx
+package-lock.json
+src/components/ejemplo.js
