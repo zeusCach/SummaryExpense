@@ -9,7 +9,7 @@ export default function Summary() {
         <>
 
             <div className="w-full max-w-2xl mx-auto">
-                <div className="pt-5" >
+                <div className="" >
                     <h1 className="text-white text-4xl font-bold pb-5">
                         Resumen de gastos
                     </h1>
