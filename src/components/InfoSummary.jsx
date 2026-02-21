@@ -7,7 +7,7 @@ export default function InfoSummary() {
 
     return (
         <>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-10 ">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl py-1 md:p-10 ">
 
                 <h1 className='text-white font-bold text-2xl px-5 py-10'>Hola {userName}, estos son tus numeros...</h1>
 

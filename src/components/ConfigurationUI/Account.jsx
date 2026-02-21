@@ -46,22 +46,32 @@ export default function Account() {
                                 Usuario
                             </label>
                             {
-                                isEdit ? (
-                                    <div className="flex-1 flex gap-4">
-                                        <input
-                                            type="text"
-                                            value={userName}
-                                            onChange={handleChangeEdit}
-                                            className="px-2 py-2 rounded-lg text-white border-2 border-green-400"
-                                        />
-                                        <EditButton />
-                                    </div>
 
+
+                                isEdit ? (
+                                    <>
+                                        <div className="flex-1 flex gap-4">
+                                            <input
+                                                type="text"
+                                                value={userName}
+                                                onChange={handleChangeEdit}
+                                                className="px-2 py-2 rounded-lg text-white border-2 border-green-400"
+                                            />
+                                            <div className="hidden md:block">
+                                                <EditButton />
+                                            </div>
+                                        </div>
+                                        <div className="block md:hidden py-5">
+                                            <EditButton />
+                                        </div>
+                                    </>
                                 ) : (
                                     <p className="text-lg font-semibold text-slate-300">
                                         {userName}
                                     </p>
                                 )
+
+
                             }
 
                         </div>
