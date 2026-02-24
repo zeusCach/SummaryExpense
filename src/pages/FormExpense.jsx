@@ -15,31 +15,39 @@ const inicialStateForm = {
 
 export default function FormExpense() {
 
+    //Traemos el dispatch del reduce context para acciones
     const dispatch = useContext(DispatchContext);
+
+    //State principal que modifica y obtiene cambios de nuestro form(value, name, change)
     const [expense, setExpense] = useState(inicialStateForm);
 
+    //funcion que captura el evento que dispara nuestro input
     function handleChange(e) {
-        const { name, value } = e.target;
+        const { name, value } = e.target; //destructuracion de name y value de nuestro target del input
 
+        //Escribimos sobre el state para agregar una tarea, sin quitar el anterior
         setExpense(prev => ({
-            ...prev,
-            [name]: value
+            ...prev, //copia del anterior valor
+            [name]: value //nueva info
         }));
 
     }
 
+    //funcion principal que captura el evento que dispara el boton submit
     function handleSumit(e) {
         e.preventDefault();
 
+        //dispatch que obtiene la accion de añadir
         dispatch({
             type: EXPESES_TYPE.ADD,
-            payload: expense
-        })
+            payload: expense //añadimos la informacion al payload
+        });
 
+        //seteamos el state
         setExpense({
             ...inicialStateForm,
             id: uuidv4()
-        })
+        });
     }
 
     return (
