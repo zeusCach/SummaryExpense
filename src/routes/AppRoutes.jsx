@@ -4,7 +4,7 @@ import Configuration from "../pages/Configuration";
 import FormExpense from "../pages/FormExpense";
 
 
-export default function AppRoutes() {
+export default function AppRoutes(dispatch) {
     return (
         <Routes>
             <Route path="/" element={<ViewPrincipal />} />
