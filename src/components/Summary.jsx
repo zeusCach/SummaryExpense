@@ -1,9 +1,15 @@
-import { useState } from "react"
+import { useContext, useMemo, useState } from "react"
 import { expensesDB } from "../data/data"
+import { ReduceContext } from "../context/reduceContext"
 
 
 export default function Summary() {
-    const [db] = useState(expensesDB)
+
+    //Traemos el state de reduce de nuestro context
+    const state = useContext(ReduceContext)
+
+    //funcion que verifica si existen gastos
+    const isEmpty = useMemo(() => state.expenses.length === 0, [state]);
 
     return (
         <>
@@ -15,33 +21,37 @@ export default function Summary() {
                     </h1>
 
 
-                    {
-                        db.map(item => (
-                            <>
-                                <section className=" bg-gradient-to-r from-orange-400 to-orange-600 rounded-2xl p-5 shadow-md hover:shadow-lg transition mb-4" key={item.id}>
-                                    <div className="flex justify-between items-start">
+                    {  //si esta vacio muestra mensaje, si no muestra info de gastos
+                        isEmpty
+                            ? <p className="text-lg text-white/80 font-bold py-18">Genial, no tienes gastos. Añade alguno y empieza ahorrar</p>
+                            :
+                            state.expenses.map(item => (
+                                <>
+                                    <section className=" bg-gradient-to-r from-orange-400 to-orange-600 rounded-2xl p-5 shadow-md hover:shadow-lg transition mb-4" key={item.id}>
+                                        <div key={item.id} className="flex justify-between items-start">
 
-                                        <div>
-                                            <p className="text-xl font-medium text-white">
-                                                {item.title}
-                                            </p>
-                                            <p className="text-lg text-gray-900  opacity-80">
-                                                {item.category}
+                                            <div >
+                                                <p className="text-xl font-medium text-white">
+                                                    {item.title}
+                                                </p>
+                                                <p className="text-lg text-gray-900  opacity-80">
+                                                    {item.category}
+                                                </p>
+                                            </div>
+
+                                            <p className="text-3xl font-bold text-right text-white mt-1">
+                                                ${item.amount}
                                             </p>
                                         </div>
 
-                                        <p className="text-3xl font-bold text-right text-white mt-1">
-                                            ${item.amount}
-                                        </p>
-                                    </div>
+                                    </section>
 
-                                </section>
-
-                            </>
+                                </>
 
 
 
-                        ))
+                            ))
+
                     }
                 </div>
             </div>
