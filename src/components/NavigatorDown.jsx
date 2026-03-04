@@ -10,7 +10,7 @@ export default function NavigatorDown() {
     return (
         <div className="bg-neutral-800 p-4">
 
-            <div className="flex justify-between items-center px-10">
+            <div className="flex justify-between items-center px-4">
                 <div className="flex flex-col items-center">
                     <UserCog2Icon className="text-white cursor-pointer hover:text-emerald-400" />
                     <p className="text-xs text-gray-400">configuración</p>
