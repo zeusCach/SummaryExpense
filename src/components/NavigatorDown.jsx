@@ -11,16 +11,16 @@ export default function NavigatorDown() {
         <div className="bg-neutral-800 p-4">
 
             <div className="flex justify-between items-center px-4">
-                <div className="flex flex-col items-center">
-                    <UserCog2Icon className="text-white cursor-pointer hover:text-emerald-400" />
+                <div className="flex flex-col items-center gap-1">
+                    <UserCog2Icon size={30} className="text-white cursor-pointer active:text-emerald-400" />
                     <p className="text-xs text-gray-400">configuración</p>
                 </div>
-                <div className="flex flex-col items-center">
-                    <CirclePlus className="text-white cursor-pointer hover:text-emerald-400" />
+                <div className="flex flex-col items-center gap-1">
+                    <CirclePlus size={30} className="text-white cursor-pointer active:text-emerald-400" />
                     <p className="text-xs text-gray-400">Añade gasto</p>
                 </div>
-                <div className="flex flex-col items-center">
-                    <ChartLine className="text-white cursor-pointer hover:text-emerald-400" />
+                <div className="flex flex-col items-center gap-1">
+                    <ChartLine size={30} className="text-white cursor-pointer active:text-emerald-400" />
                     <p className="text-xs text-gray-400">Estadísticas</p>
                 </div>
             </div>

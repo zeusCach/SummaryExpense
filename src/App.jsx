@@ -12,6 +12,7 @@ function App() {
       <Navigator />
       <AppRoutes />
       <NavigatorDown />
+      <Footer />
     </>
   )
 }
