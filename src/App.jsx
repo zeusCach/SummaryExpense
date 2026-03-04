@@ -3,16 +3,15 @@ import Footer from "./components/Footer"
 import AppRoutes from "./routes/AppRoutes"
 import { useReducer } from "react";
 import { ExpenseReducer, inicialState } from "./reducer/appReducer";
+import NavigatorDown from "./components/NavigatorDown";
 
 
 function App() {
-  //https://youtube.com/shorts/5AAMKbfcdco?si=SkgoIWPzqae50NtT
-
   return (
     <>
       <Navigator />
       <AppRoutes />
-      <Footer />
+      <NavigatorDown />
     </>
   )
 }
