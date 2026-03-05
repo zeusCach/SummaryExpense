@@ -8,7 +8,7 @@ import {
 
 export default function NavigatorDown() {
     return (
-        <div className="bg-neutral-800 p-4">
+        <div className="bg-neutral-800 p-4 md:hidden">
 
             <div className="flex justify-between items-center px-4">
                 <div className="flex flex-col items-center gap-1">
