@@ -14,8 +14,9 @@ export default function ReduceContextProvider({ children }) {
         localStorage.setItem('expenses', JSON.stringify(state.expenses))
     }, [state]);
 
+
     return (
-        <ReduceContext.Provider value={state}> {/* Provider del context para state */}
+        <ReduceContext.Provider value={state.expenses}> {/* Provider del context para state */}
             <DispatchContext.Provider value={dispatch}> {/* Provider del context para el dispatch */}
                 {children}
             </DispatchContext.Provider>
