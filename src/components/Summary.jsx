@@ -9,8 +9,10 @@ export default function Summary() {
     //Traemos el state de reduce de nuestro context
     const state = useContext(ReduceContext)
 
+    //console.log(state)
+
     //funcion que verifica si existen gastos
-    const isEmpty = useMemo(() => state.expenses.length === 0, [state]);
+    const isEmpty = useMemo(() => state.length === 0, [state]);
 
     return (
         <>
@@ -26,13 +28,11 @@ export default function Summary() {
                         isEmpty
                             ? <p className="text-lg text-white/80 font-bold py-18">Genial, no tienes gastos. Añade alguno y empieza ahorrar</p>
                             :
-                            state.expenses.map(item => (
+                            state.map(expense => (
 
                                 <CardSummary
-                                    key={item.id}
-                                    title={item.title}
-                                    category={item.category}
-                                    amount={item.amount}
+                                    key={expense.id}
+                                    expense={expense}
                                 />
 
                             ))
