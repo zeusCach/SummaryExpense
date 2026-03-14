@@ -11,6 +11,10 @@ export const ExpenseActions = {
     addExpense: (expense) => ({
         type: EXPESES_TYPE.ADD,
         payload: expense
+    }),
+    updateExpense: (expense) => ({
+        type: EXPESES_TYPE.UPDATE,
+        payload: expense
     })
 }
 
@@ -34,7 +38,14 @@ export const ExpenseReducer = (state, action) => {
                 expenses: [...state.expenses, action.payload]
             }
 
+        case (EXPESES_TYPE.UPDATE):
+            return {
+                expenses: state.expenses.map(expense => expense.id === action.payload.id
+                    ? action.payload
+                    : expense
+                )
 
+            }
         default:
             return state
     }
