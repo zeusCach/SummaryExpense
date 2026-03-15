@@ -11,6 +11,7 @@ export default function AppRoutes(dispatch) {
             <Route path="/cuenta" element={<Configuration />} />
             <Route path="/estadisticas" element={<Configuration />} />
             <Route path="/registrar" element={<FormExpense />} />
+            <Route path="/edit/:id" element={<FormExpense />} />
         </Routes>
     )
 }
