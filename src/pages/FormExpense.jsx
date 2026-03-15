@@ -1,7 +1,7 @@
 import { ArrowLeftCircle } from "lucide-react";
-import { useContext, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid"
 import { DispatchContext, ReduceContext } from "../context/reduceContext";
 import { EXPESES_TYPE } from "../reducer/appReducer";
@@ -15,11 +15,21 @@ const inicialStateForm = {
 
 export default function FormExpense() {
 
+    //Traemos el state de reduce de nuestro context
+    const state = useContext(ReduceContext)
+
     //Traemos el dispatch del reduce context para acciones
     const dispatch = useContext(DispatchContext);
 
-    //State principal que modifica y obtiene cambios de nuestro form(value, name, change)
-    const [expense, setExpense] = useState(inicialStateForm);
+    //importamos useParam para manejo de id de la url
+    const { id } = useParams();
+
+    // si hay id en la url, buscamos el id con sus propiedades
+    const expenseEdit = id ? state.find(e => e.id === id) : null
+
+    //State principal modificable - si existe un id para edicar gasto, toma el state los valores
+    //a modificar, si no existe, toma el inicialSate
+    const [expense, setExpense] = useState(expenseEdit ?? inicialStateForm);
 
     //funcion que captura el evento que dispara nuestro input
     function handleChange(e) {
@@ -50,6 +60,21 @@ export default function FormExpense() {
         });
     }
 
+    function handleEdit(e) {
+        e.preventDefault(); //evitamos la carga de renderizado cada que se haga submit
+
+        //Dispatch que nos permite actualizar una tarea
+        dispatch({
+            type: EXPESES_TYPE.UPDATE,
+            payload: expense
+        });
+
+        //seteamos el state
+        setExpense({
+            ...inicialStateForm
+        });
+    }
+
     return (
         <>
             <div className="container mx-auto max-w-4xl md:max-w-xl px-5 py-10">
@@ -59,9 +84,18 @@ export default function FormExpense() {
                         <h1 className="text-2xl text-white font-semibold ">
                             Añade tu compra
                         </h1>
-                        <p className="text-lg text-slate-300 pb-10">
-                            Puedes agregar cualquier gasto
-                        </p>
+                        {
+                            expenseEdit ?
+
+                                <p className="text-lg text-slate-300 pb-10">
+                                    Actualiza tu gasto
+                                </p>
+
+                                :
+                                <p className="text-lg text-slate-300 pb-10">
+                                    Puedes agregar cualquier gasto
+                                </p>
+                        }
                     </div>
 
                     <Link to="/" className="hidden md:block">
@@ -76,7 +110,11 @@ export default function FormExpense() {
 
                 <div className="bg-white/5 rounded-lg p-8 ">
 
-                    <form className="space-y-5" onSubmit={handleSumit}>
+                    {/* 
+                    onSubmit del form modificable, si la accion es editar
+                    es configurado para editar, si no la accion es para añadir un nuevo gasto 
+                    */}
+                    <form className="space-y-5" onSubmit={expenseEdit ? handleEdit : handleSumit}>
                         <div className="flex flex-col gap-3 p-3">
                             <label htmlFor="title"
                                 className="text-2xl font-bold text-white ">
@@ -126,8 +164,14 @@ export default function FormExpense() {
                         </div>
 
                         <button className="w-full bg-emerald-400 text-white font-semibold px-6 py-3.5 rounded-xl cursor-pointer">
-                            Agregar Gasto
+                            {expenseEdit
+                                ?
+                                'Actualizar gasto'
+                                :
+                                'Agregar Gasto'
+                            }
                         </button>
+
                     </form>
 
 
