@@ -6,7 +6,7 @@ export const EXPESES_TYPE = {
     UPDATE: 'update-expense'
 }
 
-//definimos los actions
+//definimos los actions(add, update, delete)
 export const ExpenseActions = {
     addExpense: (expense) => ({
         type: EXPESES_TYPE.ADD,
@@ -15,6 +15,10 @@ export const ExpenseActions = {
     updateExpense: (expense) => ({
         type: EXPESES_TYPE.UPDATE,
         payload: expense
+    }),
+    deleteExpense: () => ({
+        type: EXPESES_TYPE.DELETE,
+        payload: { id: expenses.id }
     })
 }
 
@@ -33,19 +37,29 @@ export const inicialState = {
 export const ExpenseReducer = (state, action) => {
 
     switch (action.type) {
+        //Action para añadir gasto
         case (EXPESES_TYPE.ADD):
             return {
                 expenses: [...state.expenses, action.payload]
             }
 
+        //Action para actualizar gasto
         case (EXPESES_TYPE.UPDATE):
             return {
+                ...state,
                 expenses: state.expenses.map(expense => expense.id === action.payload.id
                     ? action.payload
                     : expense
                 )
 
             }
+        //Action para eliminar gasto
+        case (EXPESES_TYPE.DELETE):
+            return {
+                ...state,
+                expenses: state.expenses.filter(expense => expense.id !== action.payload.id)
+            }
+
         default:
             return state
     }
