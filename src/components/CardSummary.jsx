@@ -1,12 +1,16 @@
-import { Edit, Edit2, Save, SaveIcon } from "lucide-react";
+import { Edit, Edit2, Save, SaveIcon, XCircle } from "lucide-react";
 import { useContext, useState } from "react";
 import { DispatchContext, ReduceContext } from "../context/reduceContext";
 
 import { useNavigate } from "react-router-dom";
+import { EXPESES_TYPE } from "../reducer/appReducer";
 
 export default function CardSummary({ expense }) {
     //destructuramos las variables de nuestro state expense
     const { id, title, category, amount } = expense;
+
+    //importamos nuestro reducer para el manejo del action delete
+    const dispatch = useContext(DispatchContext);
 
     //importamos useNavigate para el manejo de ruta por url
     const navigate = useNavigate();
@@ -33,6 +37,12 @@ export default function CardSummary({ expense }) {
         // setEdit(false)
     }
 
+    function handleDelete(id) {
+        dispatch({
+            type: EXPESES_TYPE.DELETE,
+            payload: { id: id }
+        })
+    }
 
     return (
         <>
@@ -46,6 +56,10 @@ export default function CardSummary({ expense }) {
                     <Edit
                         className="cursor-pointer text-slate-50"
                         onClick={handleEdit}
+                    />
+                    <XCircle
+                        className="cursor-pointer text-slate-50"
+                        onClick={() => handleDelete(id)}
                     />
                 </div>
                 <div className="flex justify-between items-center">
