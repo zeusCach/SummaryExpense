@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navigator() {
 
@@ -8,7 +8,12 @@ export default function Navigator() {
         <>
             <div className="bg-neutral-800 flex justify-between items-center p-4 ">
                 <div className="flex items-center gap-5">
-                    <h1 className="text-emerald-400 font-bold text-xl ml-2">SummaryExpense</h1>
+                    <Link to={'/'}>
+                        <h1 className="text-emerald-400 font-bold text-xl ml-2  cursor-pointer">
+                            SummaryExpense
+                        </h1>
+                    </Link>
+
                     <NavLink className="text-slate-500 font-bold" to="/cuenta">Cuenta</NavLink>
 
                 </div>

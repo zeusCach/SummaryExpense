@@ -98,7 +98,7 @@ export default function FormExpense() {
                         }
                     </div>
 
-                    <Link to="/" className="hidden md:block">
+                    <Link to="/dashboard" className="hidden md:block">
                         <span className="flex items-center gap-2 text-white hover:text-green-400">
                             <ArrowLeftCircle />
                             Ir al dashboard
@@ -176,7 +176,7 @@ export default function FormExpense() {
 
 
                 </div>
-                <Link to="/" className="block md:hidden">
+                <Link to="/dashboard" className="block md:hidden">
                     <span className="flex justify-end items-center gap-2 px-4 py-4 text-white hover:text-green-400  ">
                         <ArrowLeftCircle />
                         Ir al dashboard

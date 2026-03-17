@@ -26,7 +26,7 @@ export default function Account() {
                     <p className="text-lg text-slate-300 pb-10">Administra tu cuenta</p>
                 </div>
 
-                <Link to="/">
+                <Link to="/dashboard">
                     <span className="flex items-center gap-2 text-white hover:text-green-400">
                         <ArrowLeftCircle />
                         Ir al dashboard
