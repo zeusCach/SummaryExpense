@@ -9,7 +9,7 @@ import { EXPESES_TYPE } from "../reducer/appReducer";
 const inicialStateForm = {
     id: uuidv4(),
     title: '',
-    amount: 0,
+    amount: '',
     category: ''
 }
 
@@ -71,7 +71,8 @@ export default function FormExpense() {
 
         //seteamos el state
         setExpense({
-            ...inicialStateForm
+            ...inicialStateForm,
+            id: uuidv4()
         });
     }
 
@@ -81,14 +82,22 @@ export default function FormExpense() {
 
                 <div className="flex justify-between items-ba p-8 ">
                     <div className="">
-                        <h1 className="text-2xl text-white font-semibold ">
-                            Añade tu compra
-                        </h1>
+                        {
+                            expenseEdit ?
+                                <h1 className="text-2xl text-white font-semibold ">
+                                    Actualiza tu compra
+                                </h1>
+                                :
+                                <h1 className="text-2xl text-white font-semibold ">
+                                    Añade tu compra
+                                </h1>
+                        }
+
                         {
                             expenseEdit ?
 
                                 <p className="text-lg text-slate-300 pb-10">
-                                    Actualiza tu gasto
+                                    Puedes actualizar lo que quieras
                                 </p>
 
                                 :
