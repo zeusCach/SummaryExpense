@@ -47,7 +47,7 @@ export default function Home() {
             {/* Botón CTA principal */}
             <button
                 className="land-cta"
-                onClick={() => navigate("/dashboard")}
+                onClick={() => navigate("/datos")}
             >
                 Comenzar ahora
                 <span className="land-cta-arrow">→</span>
