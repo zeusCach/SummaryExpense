@@ -20,9 +20,13 @@ export default function Dashboard() {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-8">
-                <Summary />
-                <InfoSummary />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-8 pb-8 flex-1 overflow-hidden">
+                <div className="overflow-y-auto">
+                    <Summary />
+                </div>
+                <div className="overflow-hidden">
+                    <InfoSummary />
+                </div>
             </div>
         </>
     )
