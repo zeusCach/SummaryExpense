@@ -6,22 +6,24 @@ import { ExpenseReducer, inicialState } from "./reducer/appReducer";
 import NavigatorDown from "./components/NavigatorDown";
 import { useLocation } from "react-router-dom";
 
+//Creamos nuestras rutas publicas para mejor performace
+const PUBLIC_ROUTES = ['/', '/datos'];
 
 function App() {
   //nos brinda la ruta actual
   const location = useLocation();
 
-  //comprobamos si nuestra ruta actual es el home: devuelve true o false
-  const isHome = location.pathname === "/"
-  console.log(isHome);
+  // Comprueba si la ruta actual esta en la lista de rutas publicas
+  const isPublic = PUBLIC_ROUTES.includes(location.pathname)
+  console.log(isPublic);
 
   return (
     <>
       {/* condicion de isHome, si la ruta es la principal, solo muestra nuestro home sin footer y sin acceso a la navegacion */}
-      {!isHome && <Navigator />}
+      {!isPublic && <Navigator />}
       <AppRoutes />
-      {!isHome && <NavigatorDown />}
-      {!isHome && <Footer />}
+      {!isPublic && <NavigatorDown />}
+      {!isPublic && <Footer />}
     </>
   )
 }
