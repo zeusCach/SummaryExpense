@@ -15,7 +15,7 @@ export default function Dashboard() {
                     @{userName}
                 </p>
 
-                <Link to='/registrar' className="bg-green-600 text-slate-50 rounded-lg px-2 py-2 cursor-pointer">
+                <Link to='/registrar' className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-lg">
                     Añadir gasto
                 </Link>
             </div>

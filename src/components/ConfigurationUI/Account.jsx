@@ -27,7 +27,7 @@ export default function Account() {
                 </div>
 
                 <Link to="/dashboard">
-                    <span className="flex items-center gap-2 text-white hover:text-green-400">
+                    <span className="flex items-center gap-2 text-white hover:text-gray-400">
                         <ArrowLeftCircle />
                         Ir al dashboard
                     </span>

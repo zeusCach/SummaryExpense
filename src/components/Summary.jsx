@@ -47,7 +47,7 @@ export default function Summary() {
                             <Link to='/expenses'>
                                 <span className="
                                 flex items-center gap-2 
-                                text-white hover:text-green-400
+                                text-white hover:text-gray-400
                                 px-4 py-4
                                 ">
                                     Ver todos los gastos <ArrowRightCircle />

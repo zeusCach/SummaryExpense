@@ -9,14 +9,14 @@ import { Link } from "react-router-dom";
 
 export default function NavigatorDown() {
     return (
-        <div className="bg-neutral-800 p-4 md:hidden">
+        <div className="bg-slate-950 p-4 md:hidden">
 
             <div className="flex justify-between items-center px-4">
                 <div className="flex flex-col items-center gap-1">
                     <Link to={'/cuenta'}>
-                        <UserCog2Icon 
-                            size={30} 
-                            className="text-white cursor-pointer active:text-emerald-400" 
+                        <UserCog2Icon
+                            size={30}
+                            className="text-white cursor-pointer active:text-emerald-400"
                         />
                     </Link>
                     <p className="text-xs text-gray-400">
@@ -25,8 +25,8 @@ export default function NavigatorDown() {
                 </div>
                 <div className="flex flex-col items-center gap-1">
                     <Link to={'/registrar'}>
-                        <CirclePlus 
-                            size={30} 
+                        <CirclePlus
+                            size={30}
                             className="text-white cursor-pointer active:text-emerald-400"
                         />
                     </Link>
@@ -35,9 +35,9 @@ export default function NavigatorDown() {
                     </p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                    <ChartLine 
-                        size={30} 
-                        className="text-white cursor-pointer active:text-emerald-400" 
+                    <ChartLine
+                        size={30}
+                        className="text-white cursor-pointer active:text-emerald-400"
                     />
                     <p className="text-xs text-gray-400">
                         Estadísticas

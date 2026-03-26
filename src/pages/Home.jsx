@@ -21,7 +21,7 @@ export default function Home() {
             {/* Título principal */}
             <h1 className="land-title">
                 Bienvenido a la era<br />
-                del <span className="land-highlight">ahorro</span>
+                del ahorro
             </h1>
 
             {/* Subtítulo */}

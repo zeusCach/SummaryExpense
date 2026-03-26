@@ -172,7 +172,7 @@ export default function StartSummary() {
                                     className="sr-launch"
                                     onClick={() => navigate('/dashboard')}
                                 >
-                                    Empezar mi experiencia ✦
+                                    Empezar ahorrar
                                 </button>
                             </div>
                         </div>
@@ -180,7 +180,7 @@ export default function StartSummary() {
                 </div>
 
                 <div className="sr-footer">
-                    <div className="sr-security">🔒 Datos seguros · Nunca compartidos</div>
+                    <div className="sr-security">🔒 Tus datos son seguros · Nunca compartidos</div>
                 </div>
             </div>
         </>

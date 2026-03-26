@@ -6,7 +6,7 @@ export default function Navigator() {
 
     return (
         <>
-            <div className="bg-neutral-800 flex justify-between items-center p-4 ">
+            <div className="bg-slate-950 backdrop-blur-md flex justify-between items-center p-4 ">
                 <div className="flex items-center gap-5">
                     <Link to={'/'}>
                         <h1 className="text-emerald-400 font-bold text-xl ml-2  cursor-pointer">
@@ -19,8 +19,7 @@ export default function Navigator() {
                 </div>
                 <div className="flex justify-end items-center gap-5">
 
-                    <button className=" bg-red-400 hover:bg-red-500 
-                    px-1 py-2 text-white font-semibold rounded-lg cursor-pointer ">
+                    <button className="border border-white/40 text-white bg-transparent hover:bg-white/10 px-4 py-2 rounded-lg">
                         Cerrar sesion
                     </button>
                 </div>

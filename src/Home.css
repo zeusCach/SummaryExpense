@@ -125,7 +125,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #22c55e;
+    background: #f59e0b;
     color: #fff;
     border: none;
     border-radius: 12px;
@@ -249,7 +249,7 @@
 
 .sr {
     font-family: 'Epilogue', sans-serif;
-    background: #060608;
+    background: #0f172a;
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -509,8 +509,7 @@
 
 .sr-btn:not(:disabled):hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(245, 158, 11, 0.35);
-    background: #fbbf24;
+    background: #f59e0b;
 }
 
 .sr-btn:not(:disabled):active {
@@ -608,7 +607,7 @@
 }
 
 .sr-launch {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, #f59e0b, #f59e0b);
     color: #fff;
     font-family: 'Unbounded', sans-serif;
     font-size: 0.85rem;
@@ -623,7 +622,6 @@
 
 .sr-launch:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(16, 185, 129, 0.3);
 }
 
 .sr-footer {
@@ -639,8 +637,8 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.18);
+    font-size: 0.80rem;
+    color: rgba(235, 228, 228, 0.863);
 }
 
 .sr-dots {
