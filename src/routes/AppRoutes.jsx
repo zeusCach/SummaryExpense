@@ -4,6 +4,7 @@ import FormExpense from "../pages/FormExpense";
 import Home from "../pages/Home";
 import Dashboard from "../components/Dashboard";
 import StartSummary from "../pages/StartSummary";
+import MoreSummary from "../pages/MoreSummary";
 
 
 export default function AppRoutes(dispatch) {
@@ -14,6 +15,7 @@ export default function AppRoutes(dispatch) {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/cuenta" element={<Configuration />} />
             <Route path="/estadisticas" element={<Configuration />} />
+            <Route path="/expenses" element={<MoreSummary />} />
             <Route path="/registrar" element={<FormExpense />} />
             <Route path="/edit/:id" element={<FormExpense />} />
         </Routes>
