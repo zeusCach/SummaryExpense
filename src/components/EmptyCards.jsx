@@ -1,7 +1,7 @@
 
 export default function EmptyCards() {
     return (
-        <div className="flex flex-col items-center justify-center px-5 py-10 gap-4">
+        <div className="flex flex-col items-center justify-center px- py-10 gap-4">
 
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="10" y="30" width="80" height="50" rx="8" fill="#ffffff10" stroke="#ffffff20" strokeWidth="1.5" />

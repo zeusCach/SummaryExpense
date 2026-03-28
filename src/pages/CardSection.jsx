@@ -45,7 +45,10 @@ export default function CardSection() {
             { /* Si no hay tarjetas renderiza el componente de emptyCards */}
             {card.length === 0
                 ?
-                <EmptyCards />
+                <div className="flex flex-col items-center justify-center h-[60vh] md:max-h-max">
+                    <EmptyCards />
+                </div>
+
                 :
                 <div className="flex flex-wrap md:flex justify-center">
                     {card.map(cardItem => (
