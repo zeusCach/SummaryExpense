@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 import Dashboard from "../components/Dashboard";
 import StartSummary from "../pages/StartSummary";
 import MoreSummary from "../pages/MoreSummary";
+import CardSection from "../pages/CardSection";
+import FormBank from "../pages/FormBank";
 
 
 export default function AppRoutes(dispatch) {
@@ -14,6 +16,8 @@ export default function AppRoutes(dispatch) {
             <Route path="/datos" element={<StartSummary />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/cuenta" element={<Configuration />} />
+            <Route path="/tarjetas" element={<CardSection />} />
+            <Route path="/registrar-card" element={<FormBank />} />
             <Route path="/estadisticas" element={<Configuration />} />
             <Route path="/expenses" element={<MoreSummary />} />
             <Route path="/registrar" element={<FormExpense />} />
