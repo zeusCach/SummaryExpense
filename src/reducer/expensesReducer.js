@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid"
 
 //centralizamos los tipos de accion que hay
 export const EXPESES_TYPE = {
@@ -40,7 +41,7 @@ export const ExpenseReducer = (state, action) => {
         //Action para añadir gasto
         case (EXPESES_TYPE.ADD):
             return {
-                expenses: [...state.expenses, action.payload]
+                expenses: [...state.expenses, { ...action.payload, id: uuidv4() }]
             }
 
         //Action para actualizar gasto

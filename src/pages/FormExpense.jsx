@@ -1,12 +1,11 @@
 import { ArrowLeftCircle } from "lucide-react";
 import { useContext, useReducer, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid"
+
 import { DispatchContext, ReduceContext } from "../context/reduceContext";
 import { EXPESES_TYPE } from "../reducer/expensesReducer";
 
 const inicialStateForm = {
-    id: uuidv4(),
     title: '',
     amount: '',
     category: ''
@@ -53,10 +52,7 @@ export default function FormExpense() {
         });
 
         //seteamos el state
-        setExpense({
-            ...inicialStateForm,
-            id: uuidv4()
-        });
+        setExpense(inicialStateForm);
     }
 
     function handleEdit(e) {
@@ -69,10 +65,7 @@ export default function FormExpense() {
         });
 
         //seteamos el state
-        setExpense({
-            ...inicialStateForm,
-            id: uuidv4()
-        });
+        setExpense(inicialStateForm);
     }
 
     return (
