@@ -3,9 +3,9 @@ import { useContext, useState } from "react";
 import { DispatchContext, ReduceContext } from "../context/reduceContext";
 
 import { useNavigate } from "react-router-dom";
-import { EXPESES_TYPE } from "../reducer/appReducer";
+import { EXPESES_TYPE } from "../reducer/expensesReducer";
 
-export default function CardSummary({ expense }) {
+export default function CardExpenses({ expense }) {
     //destructuramos las variables de nuestro state expense
     const { id, title, category, amount } = expense;
 

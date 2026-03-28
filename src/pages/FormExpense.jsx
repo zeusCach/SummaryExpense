@@ -1,10 +1,9 @@
 import { ArrowLeftCircle } from "lucide-react";
 import { useContext, useReducer, useState } from "react";
-
 import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid"
 import { DispatchContext, ReduceContext } from "../context/reduceContext";
-import { EXPESES_TYPE } from "../reducer/appReducer";
+import { EXPESES_TYPE } from "../reducer/expensesReducer";
 
 const inicialStateForm = {
     id: uuidv4(),

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from "react"
-import { ExpenseReducer, inicialState } from "../reducer/appReducer";
+import { ExpenseReducer, inicialState } from "../reducer/expensesReducer";
 
 //Creamos el context para el state y el dispatch
 export const ReduceContext = createContext(null)

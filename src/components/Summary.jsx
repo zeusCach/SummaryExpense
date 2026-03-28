@@ -1,6 +1,6 @@
 import { useContext, useMemo, useState } from "react"
 import { ReduceContext } from "../context/reduceContext"
-import CardSummary from "./CardSummary";
+import CardSummary from "./CardExpenses";
 import { ArrowRightCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
