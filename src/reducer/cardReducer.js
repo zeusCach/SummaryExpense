@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid"
 
 //Creacion de las acciones de nuestras tarjetas
 export const CARD_TYPE = {
@@ -20,9 +21,15 @@ export const CardAction = {
     })
 }
 
+//localstorage
+const localStorageCard = () => {
+    const cards = localStorage.getItem('card');
+    return cards ? JSON.parse(cards) : [];
+}
+
 //state incial de nuestro reducer (falta poner localStorage)
 export const inicialStateCard = {
-    card: []
+    card: localStorageCard()
 }
 
 //reducer principar, la fuente de verdad jejej
@@ -30,7 +37,7 @@ export const CardReducer = (state, action) => {
     switch (action.type) {
         case (CARD_TYPE.ADD):
             return {
-                card: [...state.card, action.payload]
+                card: [...state.card, { ...action.payload, id: uuidv4() }]
             }
         default:
             return state

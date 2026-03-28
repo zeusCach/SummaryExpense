@@ -6,7 +6,6 @@ import { CARD_TYPE } from "../reducer/cardReducer";
 import { CardContext } from "../context/cardContext";
 
 const CARD = {
-    id: uuidv4(),
     name: '',
     type: '',
     number: '',
@@ -48,10 +47,7 @@ export default function FormBank() {
         })
 
         //Seteamos el formulario y el id
-        setCard({
-            ...CARD,
-            id: uuidv4()
-        });
+        setCard(CARD);
     }
 
     return (
