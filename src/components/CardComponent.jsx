@@ -21,8 +21,12 @@ export default function CardComponent({ card, isSelected, onSelect }) {
         <>
             <section className="p-10">
                 <div
-                    onClick={() => onSelect(card.id)}
-                    className={`${isSelected ? 'ring-2 ring-orange-500 scale-105' : 'opacity-70 hover:opacity-100'}  w-80 h-48 ${colorBank} rounded-2xl p-6 flex flex-col justify-between`}
+                    onClick={(e) => {
+                        onSelect(card.id)
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                    className={`${isSelected ? 'ring-2 ring-orange-500 scale-105' : 'opacity-70 hover:opacity-100'}  w-80 h-48 ${colorBank} rounded-2xl p-6 flex flex-col justify-between cursor-pointer`}
                 >
 
                     <div className="flex justify-between items-center">

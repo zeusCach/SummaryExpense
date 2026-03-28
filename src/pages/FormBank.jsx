@@ -13,6 +13,12 @@ const CARD = {
     user: '',
 }
 
+const BANKS = [
+    { key: 'nu', label: 'Nu' },
+    { key: 'bbva', label: 'BBVA' },
+    { key: 'banorte', label: 'Banorte' },
+    { key: 'otro', label: 'Otro' },
+]
 
 export default function FormBank() {
 
@@ -80,15 +86,22 @@ export default function FormBank() {
                                 className="text-2xl font-bold text-white ">
                                 ¿Cuál es tu banco?
                             </label>
-                            <input
-                                type="text"
+                            <select
                                 name="name"
                                 value={card.name}
                                 onChange={handleChange}
-                                required
-                                placeholder="Ej. Nu, BBVA, Banorte, Card"
-                                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 text-white placeholder:text-white/40 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-white/10"
-                            />
+                                className="w-full bg-gray-800 border border-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-gray-700 cursor-pointer"
+                            >
+                                <option value="" disabled className="text-white/40">
+                                    Selecciona tu banco
+                                </option>
+                                {BANKS.map(bank => (
+                                    <option key={bank.key} value={bank.key} className="bg-gray-800 text-white">
+                                        {bank.label}
+                                    </option>
+                                ))}
+                            </select>
+
                         </div>
 
                         <div className="flex flex-col gap-3 p-3">
@@ -108,19 +121,25 @@ export default function FormBank() {
                         </div>
 
                         <div className="flex flex-col gap-3 p-3">
-                            <label htmlFor="type"
-                                className="text-2xl font-bold text-white ">
-                                Crédito o Débito
+                            <label className="text-2xl font-bold text-white ">
+                                ¿Es débito o crédito?
                             </label>
-                            <input
-                                type="text"
+                            <select
                                 name="type"
                                 value={card.type}
                                 onChange={handleChange}
-                                required
-                                placeholder="Ej. Débito, Crédito"
-                                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 text-white placeholder:text-white/40 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-white/10"
-                            />
+                                className="w-full bg-gray-800 border border-white/10 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-gray-700 cursor-pointer"
+                            >
+                                <option value="" disabled className="text-white/40">
+                                    Tipo de tarjeta
+                                </option>
+                                <option value="credito" className="bg-gray-800 text-white">
+                                    Crédito
+                                </option>
+                                <option value="debito" className="bg-gray-800 text-white">
+                                    Débito
+                                </option>
+                            </select>
                         </div>
 
                         <div className="flex flex-col gap-3 p-3">
