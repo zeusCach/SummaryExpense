@@ -12,35 +12,30 @@ export default function InfoSummary() {
 
 
     return (
-        <>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl py-1 md:p-10 ">
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-5 md:p-10">
 
-                <h1 className='text-white font-bold text-2xl px-5 py-10'>Hola {userName}, estos son tus numeros...</h1>
+            <h1 className="text-white font-bold text-xl md:text-2xl px-2 py-5 md:py-10">
+                Hola {userName}, estos son tus números...
+            </h1>
 
-                <div className="flex items-center gap-5 p-5">
-                    <div className=" bg-green-400/30 backdrop-blur-xl border-white/10 rounded-2xl w-full max-w-2xs p-5">
-                        <p className="text-white text-xl flex flex-col gap-4">
-                            Tu dinero
-                            <span className="text-green-400 text-3xl font-bold ">
-                                {formatCurrency(totalDisponible)}
-                            </span>
-                        </p>
-                    </div>
+            <div className="grid grid-cols-2 gap-3 p-2">
 
-                    <div className="bg-red-600/30 backdrop-blur-xl border-white/10 rounded-2xl w-full max-w-2xs p-5">
-
-                        <p className=" text-white text-xl flex flex-col gap-4">
-                            Gastaste                            <span className="text-red-500 text-3xl font-bold">
-                                {formatCurrency(totalGastado)}
-                            </span>
-                        </p>
-                    </div>
+                <div className="bg-green-400/30 backdrop-blur-xl border border-white/10 rounded-2xl p-4">
+                    <p className="text-white/70 text-lg mb-2">Tu dinero</p>
+                    <span className="text-green-400 font-bold text-xl md:text-3xl break-all leading-tight">
+                        {formatCurrency(totalDisponible)}
+                    </span>
                 </div>
 
-
-
+                <div className="bg-red-600/30 backdrop-blur-xl border border-white/10 rounded-2xl p-4">
+                    <p className="text-white/70 text-lg mb-2">Gastaste</p>
+                    <span className="text-red-500 font-bold text-xl md:text-3xl break-all leading-tight">
+                        {formatCurrency(totalGastado)}
+                    </span>
+                </div>
 
             </div>
-        </>
+
+        </div>
     )
 }
