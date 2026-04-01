@@ -1,11 +1,15 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { UserContext } from "../context/userContext";
 import { useAmount } from "../hooks/useAmount";
+import { useCalculateExpense } from "../hooks/useCalculateExpenses";
+import { formatCurrency } from "../utils/formatCurrency";
 
 
 export default function InfoSummary() {
     const { state } = useAmount();
+    const { totalGastado, totalDisponible } = useCalculateExpense();
     const { userName } = useContext(UserContext);
+
 
     return (
         <>
@@ -18,7 +22,7 @@ export default function InfoSummary() {
                         <p className="text-white text-xl flex flex-col gap-4">
                             Tu dinero
                             <span className="text-green-400 text-3xl font-bold ">
-                                {`$ ${state.amount}`}
+                                {formatCurrency(totalDisponible)}
                             </span>
                         </p>
                     </div>
@@ -27,7 +31,7 @@ export default function InfoSummary() {
 
                         <p className=" text-white text-xl flex flex-col gap-4">
                             Gastaste                            <span className="text-red-500 text-3xl font-bold">
-                                $238
+                                {formatCurrency(totalGastado)}
                             </span>
                         </p>
                     </div>
