@@ -9,7 +9,7 @@ import CardSection from "../pages/CardSection";
 import FormBank from "../pages/FormBank";
 
 
-export default function AppRoutes(dispatch) {
+export default function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
