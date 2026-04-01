@@ -45,7 +45,10 @@ export default function FormExpense() {
         //dispatch que obtiene la accion de añadir
         dispatch({
             type: EXPESES_TYPE.ADD,
-            payload: expense //añadimos la informacion al payload
+            payload: {
+                ...expense,
+                amount: Number(expense.amount)
+            }//añadimos la informacion al payload
         });
 
         //seteamos el state
@@ -58,7 +61,10 @@ export default function FormExpense() {
         //Dispatch que nos permite actualizar una tarea
         dispatch({
             type: EXPESES_TYPE.UPDATE,
-            payload: expense
+            payload: {
+                ...expense,
+                amount: Number(expense.amount)
+            }
         });
 
         //seteamos el state
