@@ -1,22 +1,22 @@
-import { useContext, useMemo, useState } from "react"
-import { ReduceContext } from "../context/reduceContext"
+import { useMemo } from "react"
 import CardSummary from "./CardExpenses";
 import { ArrowRightCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useExpense } from "../hooks/useExpense";
 
 
 export default function Summary() {
 
     //Traemos el state de reduce de nuestro context
-    const state = useContext(ReduceContext)
+    const { state } = useExpense()
 
     //console.log(state)
 
     //funcion que verifica si existen gastos
-    const isEmpty = useMemo(() => state.length === 0, [state]);
+    const isEmpty = useMemo(() => state.expenses.length === 0, [state.expenses]);
 
     //retorna solo 2 gastos si hay mas en nuestro stock de gastos
-    const itemExpense = state.length > 3 ? state.slice(0, 2) : state;
+    const itemExpense = state.expenses.length > 2 ? state.expenses.slice(0, 2) : state.expenses;
 
     return (
         <>
@@ -43,7 +43,7 @@ export default function Summary() {
                     }
 
                     {
-                        state.length > 3 && (
+                        state.expenses.length > 2 && (
                             <Link to='/expenses'>
                                 <span className="
                                 flex items-center gap-2 

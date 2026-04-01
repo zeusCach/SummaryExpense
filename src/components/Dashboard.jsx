@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import InfoSummary from "./InfoSummary";
 import Summary from "./Summary";
-import { UserContext } from "../context/userContext";
-import { useContext } from "react";
+import { useAmount } from "../hooks/useAmount";
+import { amountContext } from "../context/amountContext";
 
 
 export default function Dashboard() {
-    const { userName } = useContext(UserContext)
-
+    const { state } = useAmount();
+    console.log(state.amount)
     return (
         <>
             <div className="flex items-center justify-between m-10">
                 <p className="text-slate-500 font-bold">
-                    @{userName}
+
                 </p>
 
                 <Link to='/registrar' className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-lg">

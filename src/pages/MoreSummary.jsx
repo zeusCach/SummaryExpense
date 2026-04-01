@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { ReduceContext } from "../context/reduceContext"
 import { Link } from "react-router-dom"
 import { ArrowLeftCircle } from "lucide-react"
 import CardExpenses from "../components/CardExpenses"
+import { useExpense } from "../hooks/useExpense"
 
 export default function MoreSummary() {
-    const expenses = useContext(ReduceContext)
+    const { state } = useExpense();
 
     return (
         <div className="w-full max-w-2xl mx-auto px-5 md:px-0">
@@ -27,7 +27,7 @@ export default function MoreSummary() {
                 </Link>
             </div>
 
-            {expenses.map(expense => (
+            {state.expenses.map(expense => (
                 <CardExpenses
                     key={expense.id}
                     expense={expense}

@@ -1,16 +1,14 @@
 import { Edit, Edit2, Save, SaveIcon, XCircle } from "lucide-react";
-import { useContext, useState } from "react";
-import { DispatchContext, ReduceContext } from "../context/reduceContext";
-
 import { useNavigate } from "react-router-dom";
 import { EXPESES_TYPE } from "../reducer/expensesReducer";
+import { useExpense } from "../hooks/useExpense";
 
 export default function CardExpenses({ expense }) {
+
+    const { dispatch } = useExpense()
     //destructuramos las variables de nuestro state expense
     const { id, title, category, amount } = expense;
 
-    //importamos nuestro reducer para el manejo del action delete
-    const dispatch = useContext(DispatchContext);
 
     //importamos useNavigate para el manejo de ruta por url
     const navigate = useNavigate();

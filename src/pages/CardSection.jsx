@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CardContext } from "../context/cardContext";
 import CardComponent from "../components/CardComponent";
 import EmptyCards from "../components/EmptyCards";
+import { ArrowLeftCircle } from "lucide-react";
 
 
 export default function CardSection() {
@@ -25,51 +26,51 @@ export default function CardSection() {
     return (
         <>
 
-            <div className="md:flex items-baseline justify-between m-10 " >
-                <div>
-                    <h1 className="text-white text-4xl font-bold pb-5">
-                        Tus tarjetas actuales
-                    </h1>
-                    <p className="text-lg text-slate-300 pb-10">
-                        Selecciona una tarjeta para comenzar.
-                    </p>
+            <div className="px-5 py-5 m-5">
+                <div className="md:flex items-baseline justify-between" >
+                    <div>
+                        <h1 className="text-white text-4xl font-bold pb-5">
+                            Tus tarjetas actuales
+                        </h1>
+                        <p className="text-lg text-slate-300 pb-10">
+                            Selecciona una tarjeta para comenzar.
+                        </p>
+                    </div>
+
+                    <Link to='/registrar-card' className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-lg">
+                        Añadir tarjeta
+                    </Link>
                 </div>
 
-                <Link to='/registrar-card' className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-lg">
-                    Añadir tarjeta
+                { /* Si no hay tarjetas renderiza el componente de emptyCards */}
+                {card.length === 0
+                    ?
+                    <div className="flex flex-col items-center justify-center h-[60vh] md:max-h-max">
+                        <EmptyCards />
+                    </div>
+
+                    :
+                    <div className="flex flex-wrap md:flex justify-center">
+                        {card.map(cardItem => (
+                            <CardComponent
+                                key={cardItem.id}
+                                isSelected={selectCard === cardItem.id}
+                                onSelect={handleSelect}
+                                card={cardItem}
+                            />
+
+                        ))
+                        }
+                    </div>}
+
+
+                <Link to="/dashboard">
+                    <span className="flex justify-end items-center gap-2 px-4 py-4 text-white hover:text-green-400  ">
+                        <ArrowLeftCircle />
+                        Ir al dashboard
+                    </span>
                 </Link>
-
-
             </div>
-
-            { /* Si no hay tarjetas renderiza el componente de emptyCards */}
-            {card.length === 0
-                ?
-                <div className="flex flex-col items-center justify-center h-[60vh] md:max-h-max">
-                    <EmptyCards />
-                </div>
-
-                :
-                <div className="flex flex-wrap md:flex justify-center">
-                    {card.map(cardItem => (
-                        <CardComponent
-                            key={cardItem.id}
-                            isSelected={selectCard === cardItem.id}
-                            onSelect={handleSelect}
-                            card={cardItem}
-                        />
-
-                    ))
-                    }
-                </div>}
-
-
-
-
-
-
-
-
         </>
     )
 }

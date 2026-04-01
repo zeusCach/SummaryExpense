@@ -1,9 +1,9 @@
 import { ArrowLeftCircle } from "lucide-react";
-import { useContext, useReducer, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { DispatchContext, ReduceContext } from "../context/reduceContext";
 import { EXPESES_TYPE } from "../reducer/expensesReducer";
+import { useExpense } from "../hooks/useExpense";
 
 const inicialStateForm = {
     title: '',
@@ -13,17 +13,14 @@ const inicialStateForm = {
 
 export default function FormExpense() {
 
-    //Traemos el state de reduce de nuestro context
-    const state = useContext(ReduceContext)
-
-    //Traemos el dispatch del reduce context para acciones
-    const dispatch = useContext(DispatchContext);
+    //Usamos nuestro hook personalizado del context que maneja el reduce de gasto(expenses)
+    const { state, dispatch } = useExpense();
 
     //importamos useParam para manejo de id de la url
     const { id } = useParams();
 
     // si hay id en la url, buscamos el id con sus propiedades
-    const expenseEdit = id ? state.find(e => e.id === id) : null
+    const expenseEdit = id ? state.expenses.find(e => e.id === id) : null
 
     //State principal modificable - si existe un id para edicar gasto, toma el state los valores
     //a modificar, si no existe, toma el inicialSate
