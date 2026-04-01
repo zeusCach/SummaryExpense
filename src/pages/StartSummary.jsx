@@ -1,5 +1,7 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useReducer } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAmount } from "../hooks/useAmount";
+import { AMOUNT_TYPE } from "../reducer/amountReducer";
 
 // Pasos del onboarding, cada objeto representa una pantalla
 const STEPS = [
@@ -17,7 +19,7 @@ const STEPS = [
         label: "Como esta tu finanza",
         questionParts: ["Cuanto tienes ", "ahora?"],
         hint: "Tu saldo actual para comenzar a hacer seguimiento",
-        field: "amount",
+        field: `amount`,
         type: "number",
         placeholder: "0",
         currency: true,
@@ -25,7 +27,11 @@ const STEPS = [
     },
 ]
 
+
 export default function StartSummary() {
+
+    const { state, dispatch } = useAmount();
+    console.log(state.amount)
 
     // Uso de useNavigate para dirigir a nuestro dashboard
     const navigate = useNavigate();
@@ -62,6 +68,12 @@ export default function StartSummary() {
     // Funcion que avanza al siguiente paso con animacion de salida/entrada
     const advance = () => {
         if (!onDisable) return
+        if (step === 1) {
+            dispatch({
+                type: AMOUNT_TYPE.ADD,
+                payload: Number(info.amount)
+            })
+        }
         setAnim("exit")
         setTimeout(() => {
             setStep(s => s + 1)
