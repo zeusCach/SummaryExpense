@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
+import { useAmount } from "../hooks/useAmount";
 
 
 export default function InfoSummary() {
+    const { state } = useAmount();
     const { userName } = useContext(UserContext);
 
     return (
@@ -16,7 +18,7 @@ export default function InfoSummary() {
                         <p className="text-white text-xl flex flex-col gap-4">
                             Tu dinero
                             <span className="text-green-400 text-3xl font-bold ">
-                                $5660
+                                {`$ ${state.amount}`}
                             </span>
                         </p>
                     </div>
