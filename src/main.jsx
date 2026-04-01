@@ -4,18 +4,22 @@ import './index.css'
 import App from './App.jsx'
 import { UserContextProvider } from './context/userContext.jsx'
 import { BrowserRouter } from 'react-router-dom'
-import ReduceContextProvider from './context/reduceContext.jsx'
+
 import CardContextProvider from './context/cardContext.jsx'
+import AmountContextProvider from './context/amountContext.js'
+import ExpensesContextProvider from './context/ExpensesContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <UserContextProvider>
-        <ReduceContextProvider>
+        <ExpensesContextProvider>
           <CardContextProvider>
-            <App />
+            <AmountContextProvider>
+              <App />
+            </AmountContextProvider>
           </CardContextProvider>
-        </ReduceContextProvider>
+        </ExpensesContextProvider>
       </UserContextProvider>
     </BrowserRouter>
   </StrictMode>,
