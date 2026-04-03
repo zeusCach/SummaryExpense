@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeftCircle, Edit } from "lucide-react";
+import { ArrowLeftCircle, Edit, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
 import EditButton from "../EditButton";
 import { AMOUNT_TYPE } from "../../reducer/amountReducer";
@@ -94,13 +94,13 @@ export default function MoneySettings() {
                                         onClick={isEdit}
                                         className="text-white cursor-pointer"
                                     />)
-
                             }
 
+                            <button onClick={() => dispatch({ type: AMOUNT_TYPE.RESTART })} className="flex items-center gap-2 px-4 py-2 border border-red-400 text-red-400 rounded-md hover:bg-red-400/20 transition-colors group">
+                                <RotateCcw size={16} className="group-hover:-rotate-180 transition-transform duration-300" />
+                                Reiniciar dinero
+                            </button>
                         </div>
-
-
-
                     </div>
 
                     <p className="text-slate-400 text-sm font-medium italic">
