@@ -1,22 +1,38 @@
-import { useContext, useState } from "react";
 import EditButton from "../EditButton";
-import { UserContext } from "../../context/userContext";
 import { ArrowLeftCircle, Edit } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
+import { USER_TYPE } from "../../reducer/userReducer";
+import { useEffect, useState } from "react";
 
 export default function Account() {
-    const { userName, setUserName } = useContext(UserContext);
-    const [isEdit, setIsEdit] = useState(false);
+
+    //
+    const { state, dispatch } = useUser();
+    const [editUser, setEditUser] = useState(false);
+    const [user, setUser] = useState({ userName: '' });
 
     function handleEdit() {
-        setIsEdit(true)
+        dispatch({
+            type: USER_TYPE.UPDATE,
+            payload: { user: user.userName }
+        })
+
+        setEditUser(false)
     }
 
-    function handleChangeEdit(e) {
-        const { value } = e.target
-        setUserName(value)
+    function handleChange(e) {
+        const { name, value } = e.target
+
+        setUser(prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
 
+    const isEdit = () => {
+        setEditUser(true)
+    }
     return (
         <>
 
@@ -42,32 +58,32 @@ export default function Account() {
                 <div className="container grid grid-cols-1 md:grid-cols-2 py-8 gap-6">
                     <div className="flex items-center justify-between px-2 py-2">
                         <div className="flex flex-col">
-                            <label className="text-white font-medium text-lg">
+                            <label className="text-white font-medium text-lg ">
                                 Usuario
                             </label>
                             {
 
 
-                                isEdit ? (
+                                editUser ? (
                                     <>
-                                        <div className="flex-1 flex gap-4">
+                                        <div className="flex flex-col md:flex-row gap-4">
                                             <input
                                                 type="text"
-                                                value={userName}
-                                                onChange={handleChangeEdit}
+                                                name="userName"
+                                                value={user.userName}
+                                                onChange={handleChange}
                                                 className="px-2 py-2 rounded-lg text-white border-2 border-green-400"
                                             />
-                                            <div className="hidden md:block">
-                                                <EditButton />
-                                            </div>
-                                        </div>
-                                        <div className="block md:hidden py-5">
-                                            <EditButton />
+
+                                            <EditButton
+                                                onSave={handleEdit}
+                                                onCancel={() => setEditUser(false)}
+                                            />
                                         </div>
                                     </>
                                 ) : (
                                     <p className="text-lg font-semibold text-slate-300">
-                                        {userName}
+                                        {state.user}
                                     </p>
                                 )
 
@@ -77,14 +93,12 @@ export default function Account() {
                         </div>
 
                         {
-                            !isEdit ? (
+                            !editUser && (
                                 <Edit
-                                    onClick={handleEdit}
+                                    onClick={isEdit}
                                     className="text-white cursor-pointer"
-                                />
-                            ) : (
-                                <p></p>
-                            )
+                                />)
+
                         }
 
                     </div>
@@ -93,7 +107,7 @@ export default function Account() {
                             Correo electronico
                         </label>
                         <p className="text-lg font-semibold text-slate-300">
-                            zeus.cach@outlook.com
+                            proximamente@algo.com
                         </p>
                     </div>
                 </div>
