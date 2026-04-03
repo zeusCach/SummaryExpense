@@ -6,14 +6,11 @@ export type AmountState = {
 //Creamos los acciones que tendra nuestro reducer de cantidad de nuestro dinero:
 export const AMOUNT_TYPE = {
     ADD: 'add_amount',
-    UPDATE: 'update_amount'
 } as const
 
 //Definimos las acciones para cantidad de dinero
 export type AmountActions =
     | { type: typeof AMOUNT_TYPE.ADD, payload: number }
-    | { type: typeof AMOUNT_TYPE.UPDATE, payload: number }
-
 
 //localstorage para amount
 
@@ -33,12 +30,12 @@ export const AmountReducer = (
     action: AmountActions
 ) => {
     switch (action.type) {
+        //Accion que se usa para actualizar y añadir cantidad
         case (AMOUNT_TYPE.ADD):
             return {
                 ...state,
                 amount: state.amount + action.payload
             }
-
         default:
             return state
     }
