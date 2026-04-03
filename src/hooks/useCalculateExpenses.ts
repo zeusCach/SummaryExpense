@@ -14,8 +14,12 @@ export const useCalculateExpense = () => {
     //calcula el total disponible de nuestro dinero
     const totalDisponible = stateAmount.amount - totalGastado;
 
+    //logica que indica el exeso de nuestro presupuesto(usado para UI)
+    const excedePresupuesto = totalDisponible <= 0
+
     return {
         totalGastado,
-        totalDisponible
+        totalDisponible,
+        excedePresupuesto
     }
 }
