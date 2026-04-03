@@ -3,6 +3,7 @@ import CardSummary from "./CardExpenses";
 import { ArrowRightCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useExpense } from "../hooks/useExpense";
+import EmptyExpenses from "../utils/EmptyExpenses";
 
 
 export default function Summary() {
@@ -23,14 +24,18 @@ export default function Summary() {
 
             <div className="w-full max-w-2xl mx-auto">
                 <div className="" >
-                    <h1 className="text-white text-4xl font-bold pb-5">
-                        Tus gastos más recientes
-                    </h1>
+                    {
+                        !isEmpty && (
+                            <h1 className="text-white text-4xl font-bold pb-5">
+                                Tus gastos más recientes
+                            </h1>
+                        )
+                    }
 
 
                     {  //si esta vacio muestra mensaje, si no muestra info de gastos
                         isEmpty
-                            ? <p className="text-lg text-white/80 font-bold py-18">Genial, no tienes gastos. Añade alguno y empieza ahorrar</p>
+                            ? <EmptyExpenses />
                             :
                             itemExpense.map(expense => (
 
