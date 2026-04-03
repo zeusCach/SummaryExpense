@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { EXPESES_TYPE } from "../reducer/expensesReducer";
 import { useExpense } from "../hooks/useExpense";
+import { useCalculateExpense } from "../hooks/useCalculateExpenses";
 
 const inicialStateForm = {
     title: '',
@@ -25,6 +26,9 @@ export default function FormExpense() {
     //State principal modificable - si existe un id para edicar gasto, toma el state los valores
     //a modificar, si no existe, toma el inicialSate
     const [expense, setExpense] = useState(expenseEdit ?? inicialStateForm);
+
+    const { totalDisponible } = useCalculateExpense();
+    const excedePresupuesto = expense.amount > totalDisponible
 
     //funcion que captura el evento que dispara nuestro input
     function handleChange(e) {
@@ -78,27 +82,37 @@ export default function FormExpense() {
                 <div className="flex justify-between items-ba p-8 ">
                     <div className="">
                         {
-                            expenseEdit ?
+                            expenseEdit ? (
                                 <h1 className="text-2xl text-white font-semibold ">
                                     Actualiza tu compra
                                 </h1>
-                                :
+                            ) : excedePresupuesto ? (
                                 <h1 className="text-2xl text-white font-semibold ">
+                                    Uppss
+                                </h1>
+                            ) : (
+                                < h1 className="text-2xl text-white font-semibold ">
                                     Añade tu compra
                                 </h1>
+                            )
+
                         }
 
                         {
-                            expenseEdit ?
-
+                            expenseEdit ? (
                                 <p className="text-lg text-slate-300 pb-10">
                                     Puedes actualizar lo que quieras
                                 </p>
-
-                                :
+                            ) : excedePresupuesto ? (
+                                <p className="text-lg text-red-400  pb-10">
+                                    No puedes gastar más de lo que tienes...
+                                </p>
+                            ) : (
                                 <p className="text-lg text-slate-300 pb-10">
                                     Puedes agregar cualquier gasto
                                 </p>
+                            )
+
                         }
                     </div>
 
@@ -109,8 +123,8 @@ export default function FormExpense() {
                         </span>
                     </Link>
 
-
                 </div>
+
 
                 <div className="bg-white/5 rounded-lg p-8 ">
 
@@ -119,23 +133,25 @@ export default function FormExpense() {
                     es configurado para editar, si no la accion es para añadir un nuevo gasto 
                     */}
                     <form className="space-y-5" onSubmit={expenseEdit ? handleEdit : handleSumit}>
-                        <div className="flex flex-col gap-3 p-3">
+                        <div className="flex flex-col gap-3 px-2 py-5 m-0">
                             <label htmlFor="title"
                                 className="text-2xl font-bold text-white ">
                                 ¿Qué compramos?
                             </label>
                             <input
+                                disabled={excedePresupuesto}
                                 type="text"
                                 name="title"
                                 value={expense.title}
                                 onChange={handleChange}
                                 required
                                 placeholder="Ej. Netflix, Despensa, Cine"
-                                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 text-white placeholder:text-white/40 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-white/10"
+                                className="w-full bg-white/5 backdrop-blur-sm border 
+                                border-white/10 text-white placeholder:text-white/40 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-white/10 border rounded px-3 py-2     disabled:bg-gray-100 disabled:text-gray-400  disabled:cursor-not-allowed"
                             />
                         </div>
 
-                        <div className="flex flex-col gap-3 p-3">
+                        <div className="flex flex-col gap-3 px-2 py-5 m-0">
                             <label htmlFor="amount"
                                 className="text-2xl font-bold text-white ">
                                 Cantidad
@@ -149,25 +165,34 @@ export default function FormExpense() {
                                 placeholder="Ej. 250"
                                 className="w-full bg-white/5 backdrop-blur-sm border border-white/10 text-white placeholder:text-white/40 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-white/10"
                             />
+                            {excedePresupuesto && ( // 👈 solo muestra si superó el límite
+                                <p className="text-red-500 text-sm">
+                                    Has superado tu límite de gastos
+                                </p>
+                            )}
                         </div>
 
-                        <div className="flex flex-col gap-3 p-3">
+                        <div className="flex flex-col gap-3 px-2 py-5 mb-8">
                             <label htmlFor="category"
                                 className="text-2xl font-bold text-white ">
                                 Categoria
                             </label>
                             <input
+                                disabled={excedePresupuesto}
                                 type="text"
                                 name="category"
                                 value={expense.category}
                                 onChange={handleChange}
                                 required
                                 placeholder="Ej. Entretenimiento, Comida, Salud"
-                                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 text-white placeholder:text-white/40 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-white/10"
+                                className="w-full bg-white/5 backdrop-blur-sm border border-white/10 text-white placeholder:text-white/40 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 hover:bg-white/10 border rounded px-3 py-2     disabled:bg-gray-100 disabled:text-gray-400  disabled:cursor-not-allowed"
                             />
                         </div>
 
-                        <button className="w-full bg-emerald-400 text-white font-semibold px-6 py-3.5 rounded-xl cursor-pointer">
+                        <button
+                            disabled={excedePresupuesto}
+                            className="w-full bg-emerald-400 text-white 
+                            font-semibold px-6 py-3.5 rounded-xl cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
                             {expenseEdit
                                 ?
                                 'Actualizar gasto'
@@ -186,7 +211,7 @@ export default function FormExpense() {
                         Ir al dashboard
                     </span>
                 </Link>
-            </div>
+            </div >
 
         </>
     )
