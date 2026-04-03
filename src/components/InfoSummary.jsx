@@ -3,19 +3,19 @@ import { UserContext } from "../context/userContext";
 import { useAmount } from "../hooks/useAmount";
 import { useCalculateExpense } from "../hooks/useCalculateExpenses";
 import { formatCurrency } from "../utils/formatCurrency";
+import { useUser } from "../hooks/useUser";
 
 
 export default function InfoSummary() {
-    const { state } = useAmount();
     const { totalGastado, totalDisponible } = useCalculateExpense();
-    const { userName } = useContext(UserContext);
+    const { state } = useUser();
 
 
     return (
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-5 md:p-10">
 
             <h1 className="text-white font-bold text-xl md:text-2xl px-2 py-5 md:py-10">
-                Hola {userName}, estos son tus números...
+                Hola {state.user}, estos son tus números...
             </h1>
 
             <div className="grid grid-cols-2 gap-3 p-2">

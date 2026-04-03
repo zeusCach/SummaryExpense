@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef, useReducer } from "react"
+import { useState, useEffect, useRef, useReducer, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAmount } from "../hooks/useAmount";
 import { AMOUNT_TYPE } from "../reducer/amountReducer";
+import { USER_TYPE } from "../reducer/userReducer";
+import { useUser } from "../hooks/useUser";
 
 // Pasos del onboarding, cada objeto representa una pantalla
 const STEPS = [
@@ -30,9 +32,9 @@ const STEPS = [
 
 export default function StartSummary() {
 
-    const { state, dispatch } = useAmount();
-    console.log(state.amount)
-
+    const { dispatch: AmountDispatch } = useAmount();
+    const { state, dispatch: UserDispatch } = useUser();
+    console.log('nombre', state.user)
     // Uso de useNavigate para dirigir a nuestro dashboard
     const navigate = useNavigate();
 
@@ -68,12 +70,20 @@ export default function StartSummary() {
     // Funcion que avanza al siguiente paso con animacion de salida/entrada
     const advance = () => {
         if (!onDisable) return
-        if (step === 1) {
-            dispatch({
+
+        if (step === 0) {
+            UserDispatch({
+                type: USER_TYPE.ADD,
+                payload: { user: info.name }
+            })
+
+        } else if (step === 1) {
+            AmountDispatch({
                 type: AMOUNT_TYPE.ADD,
                 payload: Number(info.amount)
             })
         }
+
         setAnim("exit")
         setTimeout(() => {
             setStep(s => s + 1)
