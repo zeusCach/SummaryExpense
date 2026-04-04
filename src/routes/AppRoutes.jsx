@@ -7,6 +7,7 @@ import StartSummary from "../pages/StartSummary";
 import MoreSummary from "../pages/MoreSummary";
 import CardSection from "../pages/CardSection";
 import FormBank from "../pages/FormBank";
+import StatisticsExpenses from "../pages/StatisticsExpenses";
 
 
 export default function AppRoutes() {
@@ -18,7 +19,7 @@ export default function AppRoutes() {
             <Route path="/cuenta" element={<Configuration />} />
             <Route path="/tarjetas" element={<CardSection />} />
             <Route path="/registrar-card" element={<FormBank />} />
-            <Route path="/estadisticas" element={<Configuration />} />
+            <Route path="/estadisticas" element={<StatisticsExpenses />} />
             <Route path="/expenses" element={<MoreSummary />} />
             <Route path="/registrar" element={<FormExpense />} />
             <Route path="/edit/:id" element={<FormExpense />} />
