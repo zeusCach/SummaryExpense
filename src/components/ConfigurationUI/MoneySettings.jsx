@@ -44,71 +44,75 @@ export default function MoneySettings() {
     }
 
     return (
-        <>
-            <div className="space-y-4 pt-5">
+        <div className="pt-5">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
 
-                <div className=" bg-white/5 rounded-lg p-8">
-                    <h2 className="text-white font-normal text-2xl ml-1">
-                        Controla el total de tu dinero
+                {/* Header */}
+                <div className="mb-8">
+                    <h2 className="text-white text-2xl font-semibold">
+                        Controla tu dinero
                     </h2>
-                    <div className="container grid grid-cols-1 md:grid-cols-2 py-8 gap-6">
-                        <div className="flex items-center justify-between px-2 py-2">
-                            <div className="flex flex-col">
-                                <label className="text-white font-medium text-lg ">
-                                    Dinero actual
-                                </label>
-                                {
-
-
-                                    editAmount ? (
-                                        <>
-                                            <div className="flex flex-col md:flex-row gap-4">
-                                                <input
-                                                    type="text"
-                                                    name="amount"
-                                                    value={amountState.amount}
-                                                    onChange={handleChange}
-                                                    className="px-2 py-2 rounded-lg text-white border-2 border-green-400"
-                                                />
-
-                                                <EditButton
-                                                    onSave={handleEdit}
-                                                    onCancel={() => setEditAmount(false)}
-                                                />
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <p className="text-lg font-semibold text-slate-300">
-                                            {formatCurrency(state.amount)}
-                                        </p>
-                                    )
-
-
-                                }
-
-                            </div>
-
-                            {
-                                !editAmount && (
-                                    <Edit
-                                        onClick={isEdit}
-                                        className="text-white cursor-pointer"
-                                    />)
-                            }
-
-                            <button onClick={() => dispatch({ type: AMOUNT_TYPE.RESTART })} className="flex items-center gap-2 px-4 py-2 border border-red-400 text-red-400 rounded-md hover:bg-red-400/20 transition-colors group">
-                                <RotateCcw size={16} className="group-hover:-rotate-180 transition-transform duration-300" />
-                                Reiniciar dinero
-                            </button>
-                        </div>
-                    </div>
-
-                    <p className="text-slate-400 text-sm font-medium italic">
-                        Recuerda que es tu dinero, no puedes modificar y engañarte.
-                        ¡Modifica cuando tu dinero crezca!
+                    <p className="text-slate-400 text-sm mt-1">
+                        Administra el total de tu presupuesto
                     </p>
                 </div>
+
+                {/* Card de dinero */}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+
+                    {/* Info + edición */}
+                    <div className="flex flex-col gap-3 flex-1">
+                        <label className="text-slate-400 text-sm font-medium uppercase tracking-wide">
+                            Dinero actual
+                        </label>
+
+                        {editAmount ? (
+                            <div className="flex flex-col md:flex-row gap-3">
+                                <input
+                                    type="text"
+                                    name="amount"
+                                    value={amountState.amount}
+                                    onChange={handleChange}
+                                    placeholder="0.00"
+                                    className="bg-white/5 border border-green-400/50 focus:border-green-400 outline-none text-white px-4 py-2 rounded-lg transition-colors w-full md:w-48"
+                                />
+                                <EditButton
+                                    onSave={handleEdit}
+                                    onCancel={() => setEditAmount(false)}
+                                />
+                            </div>
+                        ) : (
+                            <div className="flex items-center gap-3">
+                                <p className="text-3xl font-bold text-white">
+                                    {formatCurrency(state.amount)}
+                                </p>
+                                <button
+                                    onClick={isEdit}
+                                    className="text-slate-400 hover:text-white transition-colors"
+                                >
+                                    <Edit className="cursor-pointer" size={20} />
+                                </button>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Botón reiniciar */}
+                    <button
+                        onClick={() => dispatch({ type: AMOUNT_TYPE.RESTART })}
+                        className="flex items-center gap-2 px-4 py-2 border border-red-400/50 text-red-400 rounded-lg hover:bg-red-400/10 hover:border-red-400 transition-all group self-start md:self-center"
+                    >
+                        <RotateCcw size={15} className="group-hover:-rotate-180 transition-transform duration-500" />
+                        Reiniciar
+                    </button>
+                </div>
+
+                {/* Nota */}
+                <p className="text-slate-500 text-sm mt-5">
+                    Recuerda que es tu dinero, no puedes modificar y engañarte.
+                    ¡Modifica solo cuando tu dinero crezca!
+                </p>
+
             </div>
-        </>
+        </div>
     )
 }

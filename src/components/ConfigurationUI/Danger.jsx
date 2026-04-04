@@ -1,29 +1,24 @@
 
 export default function Danger() {
     return (
-        <>
+        <div className="pt-5">
+            <div className="bg-white/5 border border-red-500/20 rounded-2xl p-8">
 
-            <div className="space-y-4 pt-5">
-                <div className=" bg-white/5 rounded-lg p-8">
-                    <h2 className="text-white font-normal text-2xl ml-1">
-                        Zona de riesgo
-                    </h2>
-                    <div className="container grid grid-cols-1 md:grid-cols-2 py-8 gap-6">
-
-                        <div className="flex flex-col">
-                            <div className="flex-1 flex gap-4 pb-2">
-                                <button
-                                    className="px-2 py-2 bg-red-400 hover:bg-red-500 text-white font-medium rounded-xl cursor-pointer"
-                                >
-                                    Eliminar cuenta
-                                </button>
-                            </div>
-                            <p className="text-xs text-slate-300">Al eliminar tu cuenta perderás toda tu información.</p>
-                        </div>
-                    </div>
+                <div className="mb-8">
+                    <h2 className="text-red-400 text-2xl font-semibold">Zona de riesgo</h2>
+                    <p className="text-slate-400 text-sm mt-1">Acciones irreversibles sobre tu cuenta</p>
                 </div>
-            </div>
 
-        </>
+                <div className="p-2 flex flex-col gap-3">
+                    <button className="self-start px-4 py-2 bg-red-500/10 border border-red-500/30 hover:bg-red-500/20 hover:border-red-500 text-red-400 font-medium rounded-lg transition-all cursor-pointer">
+                        Eliminar cuenta
+                    </button>
+                    <p className="text-sm text-slate-500">
+                        Al eliminar tu cuenta perderás toda tu información de forma permanente.
+                    </p>
+                </div>
+
+            </div>
+        </div>
     )
 }

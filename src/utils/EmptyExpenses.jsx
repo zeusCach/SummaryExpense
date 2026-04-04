@@ -24,7 +24,7 @@ export default function EmptyExpenses() {
 
             <p className="text-white/70 font-medium text-2xl">Sin gastos por aquí</p>
             <p className="text-white/45 text-sm text-center max-w-xs mt-1">
-                Añade tu primer gasto y empieza a tomar el control de tu dinero.
+                Ve a Configuración, agrega tu presupuesto y toma el control de tu dinero.
             </p>
         </div>
     )
