@@ -1,8 +1,20 @@
 {
   "name": "formulario",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "Hola, coder.\r Esta aplicación aún está en desarrollo. Vuelve pronto.",
+  "homepage": "https://github.com/zeusCach/SummaryExpense#readme",
+  "bugs": {
+    "url": "https://github.com/zeusCach/SummaryExpense/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeusCach/SummaryExpense.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "eslint.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,12 +22,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
     "@radix-ui/react-dialog": "^1.1.15",
     "@tailwindcss/vite": "^4.1.18",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
     "lucide-react": "^0.574.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0",
+    "recharts": "^3.8.1",
     "tailwindcss": "^4.1.18",
     "uuid": "^13.0.0",
     "uuidv4": "^6.2.13",
