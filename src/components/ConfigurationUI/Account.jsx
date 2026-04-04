@@ -88,13 +88,15 @@ export default function Account() {
                         <label className="text-slate-400 text-sm font-medium uppercase tracking-wide">
                             Correo electrónico
                         </label>
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-col md:flex-row gap-2">
                             <p className="text-xl font-bold text-white">
                                 proximamente@algo.com
                             </p>
-                            <span className="text-xs text-slate-500 bg-white/5 border border-white/10 px-2 py-1 rounded-full">
-                                Próximamente
-                            </span>
+                            <div>
+                                <span className="text-xs text-slate-500 bg-white/5 border border-white/10 px-2 py-1 rounded-full">
+                                    Próximamente
+                                </span>
+                            </div>
                         </div>
                     </div>
 
