@@ -1,4 +1,4 @@
-import { ChartLine, CirclePlus, LogOutIcon, UserCog2Icon } from "lucide-react";
+import { ChartLine, CirclePlus, LogOutIcon, UserCog2Icon, Wallet, WalletCardsIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function NavigatorDown() {
@@ -28,7 +28,8 @@ export default function NavigatorDown() {
                     </p>
                 </Link>
 
-                <div className="flex flex-col items-center gap-1 group">
+
+                <Link to={"/estadisticas"} className="flex flex-col items-center gap-1 group">
                     <ChartLine
                         size={24}
                         className="text-slate-400 group-active:text-emerald-400 transition-colors"
@@ -36,8 +37,17 @@ export default function NavigatorDown() {
                     <p className="text-xs text-slate-500">
                         Estadísticas
                     </p>
-                </div>
+                </Link>
 
+                <Link to={"/tarjetas"} className="flex flex-col items-center gap-1 group">
+                    <WalletCardsIcon
+                        size={24}
+                        className="text-slate-400 group-active:text-emerald-400 transition-colors"
+                    />
+                    <p className="text-xs text-slate-500">
+                        Mis tarjetas
+                    </p>
+                </Link>
             </div>
         </div>
     )
