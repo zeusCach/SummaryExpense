@@ -1,50 +1,44 @@
-import {
-    ChartLine,
-    CirclePlus,
-    LogOutIcon,
-    UserCog2Icon
-} from "lucide-react";
-import { Link } from "react-router-dom";
-
+import { ChartLine, CirclePlus, LogOutIcon, UserCog2Icon } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function NavigatorDown() {
-    return (
-        <div className="bg-slate-950 p-4 md:hidden">
+    const { pathname } = useLocation();
 
-            <div className="flex justify-between items-center px-4">
-                <div className="flex flex-col items-center gap-1">
-                    <Link to={'/cuenta'}>
-                        <UserCog2Icon
-                            size={30}
-                            className="text-white cursor-pointer active:text-emerald-400"
-                        />
-                    </Link>
-                    <p className="text-xs text-gray-400">
-                        configuración
+    return (
+        <div className="fixed bottom-0 left-0 right-0 bg-slate-950/90 backdrop-blur-md border-t border-white/10 p-4 md:hidden z-50">
+            <div className="flex justify-around items-center">
+
+                <Link to="/cuenta" className="flex flex-col items-center gap-1 group">
+                    <UserCog2Icon
+                        size={24}
+                        className={`transition-colors ${pathname === '/cuenta' ? 'text-emerald-400' : 'text-slate-400 group-active:text-emerald-400'}`}
+                    />
+                    <p className={`text-xs transition-colors ${pathname === '/cuenta' ? 'text-emerald-400' : 'text-slate-500'}`}>
+                        Configuración
                     </p>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                    <Link to={'/registrar'}>
-                        <CirclePlus
-                            size={30}
-                            className="text-white cursor-pointer active:text-emerald-400"
-                        />
-                    </Link>
-                    <p className="text-xs text-gray-400">
+                </Link>
+
+                <Link to="/registrar" className="flex flex-col items-center gap-1 group">
+                    <CirclePlus
+                        size={24}
+                        className={`transition-colors ${pathname === '/registrar' ? 'text-emerald-400' : 'text-slate-400 group-active:text-emerald-400'}`}
+                    />
+                    <p className={`text-xs transition-colors ${pathname === '/registrar' ? 'text-emerald-400' : 'text-slate-500'}`}>
                         Añade gasto
                     </p>
-                </div>
-                <div className="flex flex-col items-center gap-1">
+                </Link>
+
+                <div className="flex flex-col items-center gap-1 group">
                     <ChartLine
-                        size={30}
-                        className="text-white cursor-pointer active:text-emerald-400"
+                        size={24}
+                        className="text-slate-400 group-active:text-emerald-400 transition-colors"
                     />
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-slate-500">
                         Estadísticas
                     </p>
                 </div>
-            </div>
 
+            </div>
         </div>
     )
 }
