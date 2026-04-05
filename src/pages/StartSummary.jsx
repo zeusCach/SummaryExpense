@@ -9,11 +9,11 @@ import { useUser } from "../hooks/useUser";
 const STEPS = [
     {
         label: "Cuentanos de ti",
-        questionParts: ["Como te ", "llamamos?"],
+        questionParts: ["Escribe ", "tu nombre"],
         hint: "El nombre con el que personalizaremos tu experiencia",
         field: "name",
         type: "text",
-        placeholder: "Tu nombre...",
+        placeholder: "Ej. Abraham",
         currency: false,
         btnLabel: "Continuar",
     },
