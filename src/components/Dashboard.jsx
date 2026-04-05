@@ -27,8 +27,8 @@ export default function Dashboard() {
     }, []);
     return (
         <>
-            <div className="flex items-center justify-between m-10">
-                <div className="md:flex items-center gap-2">
+            <div className="md:flex items-center justify-between m-8">
+                <div className="flex items-center gap-2 pb-4">
                     <p className="text-white font-bold">{saludo}</p>
                     <p className="text-white font-bold">
                         @{state.user}
@@ -57,4 +57,4 @@ export default function Dashboard() {
             </div>
         </>
     )
-}
+}    
