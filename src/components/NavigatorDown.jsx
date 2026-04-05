@@ -1,4 +1,4 @@
-import { ChartLine, CirclePlus, LogOutIcon, UserCog2Icon, Wallet, WalletCardsIcon } from "lucide-react";
+import { ChartLine, CirclePlus, HomeIcon, LogOutIcon, UserCog2Icon, Wallet, WalletCardsIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function NavigatorDown() {
@@ -15,6 +15,16 @@ export default function NavigatorDown() {
                     />
                     <p className={`text-xs transition-colors ${pathname === '/cuenta' ? 'text-emerald-400' : 'text-slate-500'}`}>
                         Configuración
+                    </p>
+                </Link>
+
+                <Link to="/dashboard" className="flex flex-col items-center gap-1 group">
+                    <HomeIcon
+                        size={24}
+                        className={`transition-colors ${pathname === '/dashboard' ? 'text-emerald-400' : 'text-slate-400 group-active:text-emerald-400'}`}
+                    />
+                    <p className={`text-xs transition-colors ${pathname === '/dashboard' ? 'text-emerald-400' : 'text-slate-500'}`}>
+                        Home
                     </p>
                 </Link>
 
