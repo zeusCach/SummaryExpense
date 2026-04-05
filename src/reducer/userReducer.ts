@@ -20,7 +20,7 @@ export type UserActions =
 //localStorage para guardar storage de nuestro usuario
 const localStorageUser = () => {
     const user = localStorage.getItem('user');
-    if (!user || user === "undefined") return 'Usuario'
+    if (!user || user === "undefined") return ''
 
     return JSON.parse(user)
 }

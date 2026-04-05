@@ -1,9 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import "../Home.css"; // o puedes usar styled-components / inline
 import { ChartColumnBigIcon, ChartNoAxesCombined, LockKeyhole, Rocket } from "lucide-react";
+import { useUser } from "../hooks/useUser";
 
 export default function Home() {
     const navigate = useNavigate();
+    const { state } = useUser();
+
+    const authUser = () => {
+        if (state.user) {
+            return navigate("/dashboard");
+        }
+
+        return navigate("/datos")
+    }
+
+
 
     return (
         <div className="land-root">
@@ -47,7 +59,7 @@ export default function Home() {
             {/* Botón CTA principal */}
             <button
                 className="land-cta"
-                onClick={() => navigate("/datos")}
+                onClick={authUser}
             >
                 Comenzar ahora
                 <span className="land-cta-arrow">→</span>
