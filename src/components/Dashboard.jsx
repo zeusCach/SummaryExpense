@@ -3,18 +3,37 @@ import InfoSummary from "./InfoSummary";
 import Summary from "./Summary";
 import { useUser } from "../hooks/useUser";
 import { useCalculateExpense } from "../hooks/useCalculateExpenses";
+import { useEffect, useState } from "react";
 
+const mensajes = [
+    "Hola de nuevo",
+    "Que tal, aquí lo dejaste",
+    "Sigue tu viaje",
+    "¡Qué bueno verte!",
+    "¡Bienvenido! ¿Cómo estás hoy?"
+];
+
+//Obtiene un mensaje aleatorio de nuestro pipe de mensajes de saludos 
+const getMensaje = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 export default function Dashboard() {
+    const [saludo, setSaludo] = useState("");
     const { state } = useUser();
-    const navigate = useNavigate();
     const { excedePresupuesto } = useCalculateExpense();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setSaludo(getMensaje(mensajes));
+    }, []);
     return (
         <>
             <div className="flex items-center justify-between m-10">
-                <p className="text-slate-500 font-bold">
-                    @{state.user}
-                </p>
+                <div className="flex items-center gap-2">
+                    <p className="text-white font-bold">{saludo}</p>
+                    <p className="text-white font-bold">
+                        @{state.user}
+                    </p>
+                </div>
 
                 <button
                     disabled={excedePresupuesto}
@@ -38,4 +57,4 @@ export default function Dashboard() {
             </div>
         </>
     )
-}
+}          
