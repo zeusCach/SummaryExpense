@@ -48,16 +48,6 @@ export default function NavigatorDown() {
                         Estadísticas
                     </p>
                 </Link>
-
-                <Link to={"/tarjetas"} className="flex flex-col items-center gap-1 group">
-                    <WalletCardsIcon
-                        size={24}
-                        className="text-slate-400 group-active:text-emerald-400 transition-colors"
-                    />
-                    <p className="text-xs text-slate-500">
-                        Mis tarjetas
-                    </p>
-                </Link>
             </div>
         </div>
     )

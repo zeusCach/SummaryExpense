@@ -50,7 +50,7 @@ export default function CardSection() {
                     </div>
 
                     :
-                    <div className="flex flex-wrap md:flex justify-center">
+                    <div className="flex flex-wrap md:flex justify-center m-10">
                         {card.map(cardItem => (
                             <CardComponent
                                 key={cardItem.id}
