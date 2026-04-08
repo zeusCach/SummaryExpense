@@ -2,10 +2,16 @@ import { useContext } from "react";
 import { CardContext } from "../../context/cardContext";
 import CardComponent from "../CardComponent";
 import { useNavigate } from "react-router-dom";
+import { useCard } from "../../hooks/useCard";
 
 export default function Card() {
-    const { card } = useContext(CardContext);
+    const state = useCard();
     const navigate = useNavigate();
+
+    //Selecciona la ultima tarjeta agregada
+    const cardSelect = state.card.length > 1 ? state.card.slice(-1) : state.card
+
+    console.log(cardSelect)
 
     return (
         <div className="pt-5">
@@ -25,13 +31,13 @@ export default function Card() {
                 <div>
 
                     {/* Info de tarjeta */}
-                    <div className="flex flex-col gap-3 pb-8">
+                    <div className="flex flex-col gap-3 pb-8 overflow-hidden">
                         <label className="text-slate-400 text-sm font-medium uppercase tracking-wide pb-5">
                             Tarjeta actual
                         </label>
 
                         {
-                            card.map(cardItem => (
+                            cardSelect.map(cardItem => (
                                 <CardComponent
                                     key={cardItem.id}
                                     card={cardItem}
