@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { useAnalytics } from "../hooks/useAnalytics";
-import { TrendingDown, AlertCircle, Sparkles, Bug } from "lucide-react";
+import { TrendingDown, AlertCircle, Sparkles, Bug, LightbulbIcon } from "lucide-react";
 import { formatCurrency } from "../utils/formatCurrency";
 
 const COLORS = ["#10b981", "#3b82f6", "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899", "#14b8a6", "#f97316"];
@@ -126,7 +126,11 @@ export default function StatisticsExpenses() {
 
                     {/* Sugerencias */}
                     <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                        <h2 className="text-white text-lg font-semibold mb-4">Sugerencias 💡</h2>
+
+                        <div className="flex items-center gap-2 mb-2">
+                            <LightbulbIcon size={16} className="text-amber-400" />
+                            <h2 className="text-white text-lg font-semibold">Sugerencias</h2>
+                        </div>
                         <div className="space-y-3">
                             {suggestions.map((s, i) => (
                                 <div key={i} className="flex items-start gap-3 bg-white/5 rounded-xl px-4 py-3">
