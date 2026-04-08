@@ -32,7 +32,7 @@ export default function Card() {
 
                     {/* Info de tarjeta */}
                     <div className="flex flex-col gap-3 pb-8 overflow-hidden">
-                        <label className="text-slate-400 text-sm font-medium uppercase tracking-wide pb-5">
+                        <label className="text-slate-400 text-sm font-medium uppercase tracking-wide">
                             Tarjeta actual
                         </label>
 
