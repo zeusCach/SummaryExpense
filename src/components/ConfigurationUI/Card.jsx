@@ -11,7 +11,7 @@ export default function Card() {
     //Selecciona la ultima tarjeta agregada
     const cardSelect = state.card.length > 1 ? state.card.slice(-1) : state.card
 
-    console.log(cardSelect)
+    console.log(cardSelect.length)
 
     return (
         <div className="pt-5">
@@ -33,7 +33,7 @@ export default function Card() {
                     {/* Info de tarjeta */}
                     <div className="flex flex-col gap-3 pb-8 overflow-hidden">
                         <label className="text-slate-400 text-sm font-medium uppercase tracking-wide">
-                            Tarjeta actual
+                            {!cardSelect.length ? 'No hay tarjetas' : 'Tarjeta actual'}
                         </label>
 
                         {

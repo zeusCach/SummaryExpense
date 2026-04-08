@@ -26,8 +26,8 @@ export default function CardSection() {
     return (
         <>
 
-            <div className="px-5 py-5 m-5">
-                <div className="md:flex items-baseline justify-between" >
+            <div className="space-y-10 p-10">
+                <div className="md:flex items-baseline justify-between " >
                     <div>
                         <h1 className="text-white text-4xl font-bold pb-5">
                             Tus tarjetas actuales

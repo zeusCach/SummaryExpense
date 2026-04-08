@@ -19,7 +19,7 @@ export default function CardComponent({ card, isSelected, onSelect }) {
 
     return (
         <>
-            <section className="pt-10 last:pt-10" >
+            <section className="pt-10 md:last:pt-5" >
                 <div
                     onClick={(e) => { onSelect(card.id), e.preventDefault(), e.stopPropagation() }}
                     className={`${isSelected ? 'ring-2 ring-orange-500 scale-105' : 'opacity-70 hover:opacity-100'}  w-full md:w-80 h-48 ${colorBank} rounded-2xl p-6 flex flex-col justify-between cursor-pointer`}
