@@ -31,7 +31,7 @@ export default function CardComponent({ card, isSelected, onSelect }) {
 
                 <div>
                     <p className="text-white/60 text-sm tracking-widest ">
-                        **** **** **** {card.number}
+                        •••• •••• •••• {card.number}
                     </p>
                     <p className="text-white font-medium mt-1">{card.user}</p>
                 </div>
