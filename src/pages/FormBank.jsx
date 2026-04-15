@@ -1,6 +1,5 @@
 import { ArrowLeftCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid"
 import { useContext, useState } from "react"
 import { CARD_TYPE } from "../reducer/cardReducer";
 import { CardContext } from "../context/cardContext";
@@ -31,9 +30,13 @@ export default function FormBank() {
     function handleChange(e) {
         const { name, value } = e.target;
 
+        const parsed = name === 'number'
+            ? value.replace(/\D/g, '').slice(0, 16)
+            : value
+
         setCard(prev => ({
             ...prev,
-            [name]: value
+            [name]: parsed
         }));
 
     }
@@ -41,9 +44,15 @@ export default function FormBank() {
     function handleSubmit(e) {
         e.preventDefault();
 
+        if (card.number < 16) return;
+        if (!card.name || !card.type || !card.number || !card.user) return;
+
         dispatch({
             type: CARD_TYPE.ADD,
-            payload: card
+            payload: {
+                ...card,
+                number: card.number.slice(-4)
+            }
         })
 
         //Seteamos el formulario y el id
@@ -144,7 +153,8 @@ export default function FormBank() {
                                 Número de tarjeta
                             </label>
                             <input
-                                type="number"
+                                type="text"
+                                inputMode="number"
                                 name="number"
                                 value={card.number}
                                 onChange={handleChange}
