@@ -20,7 +20,7 @@ export default function MoneySettings() {
     //funcion handle para actualizar nuestro total(solamente permite para cuando tu dinero crece)
     function handleEdit() {
         dispatch({
-            type: AMOUNT_TYPE.ADD,
+            type: AMOUNT_TYPE.SET_AMOUNT,
             payload: Number(amountState.amount)
         })
 
@@ -31,10 +31,15 @@ export default function MoneySettings() {
     function handleChange(e) {
         const { name, value } = e.target
 
+        //parceamos el dato de entrada de cantidad de dinero
+        const parsed = name === 'amount'
+            ? value.replace(/\D/g, '')
+            : value
+
         //modifica el state principal e introduce los datos escritos por el usuarioo
         setAmountState(prev => ({
             ...prev,
-            [name]: value
+            [name]: parsed
         }))
     }
 
@@ -70,6 +75,7 @@ export default function MoneySettings() {
                             <div className="flex flex-col md:flex-row gap-3">
                                 <input
                                     type="text"
+                                    inputMode="numeric"
                                     name="amount"
                                     value={amountState.amount}
                                     onChange={handleChange}
