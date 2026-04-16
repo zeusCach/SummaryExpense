@@ -8,10 +8,9 @@ export default function Home() {
     const { state } = useUser();
 
     const authUser = () => {
-        if (state.user) {
-            return navigate("/dashboard");
-        }
-        return navigate("/datos")
+        return state.user
+            ? navigate("/dashboard")
+            : navigate("/datos")
     }
 
     return (
