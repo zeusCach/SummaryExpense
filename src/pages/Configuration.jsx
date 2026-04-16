@@ -1,11 +1,11 @@
 
-import Account from "../components/ConfigurationUI/Account";
-import Password from "../components/ConfigurationUI/Password";
-import Danger from "../components/ConfigurationUI/Danger";
-import MoneySettings from "../components/ConfigurationUI/MoneySettings";
+import Account from "../components/configuration/Account";
+import Password from "../components/configuration/Password";
+import Danger from "../components/configuration/Danger";
+import MoneySettings from "../components/configuration/MoneySettings";
 import { ArrowLeftCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import Card from "../components/ConfigurationUI/Card";
+import Card from "../components/configuration/Card";
 
 
 export default function Configuration() {
