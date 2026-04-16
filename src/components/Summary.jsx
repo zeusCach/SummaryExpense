@@ -3,7 +3,7 @@ import CardSummary from "./CardExpenses";
 import { ArrowRightCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useExpense } from "../hooks/useExpense";
-import EmptyExpenses from "../utils/EmptyExpenses";
+import EmptyExpenses from "../components/EmptyExpenses";
 
 
 export default function Summary() {
