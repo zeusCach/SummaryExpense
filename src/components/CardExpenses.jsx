@@ -1,13 +1,20 @@
-import { Edit, Edit2, Save, SaveIcon, XCircle } from "lucide-react";
+import { CircleAlertIcon, Edit, Edit2, Save, SaveIcon, XCircle } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 import { EXPESES_TYPE } from "../reducer/expensesReducer";
 import { useExpense } from "../hooks/useExpense";
 import { formatCurrency } from "../utils/formatCurrency";
+import { useState } from "react";
+import Modal from "./ui/Modal";
 
 export default function CardExpenses({ expense }) {
 
+    //hook que controla la accion del modal
+    const [isOpen, setIsOpen] = useState(false);
+
+    //usamos el hook de gasto, especificamente el dispatch
     const { dispatch } = useExpense()
+
     //destructuramos las variables de nuestro state expense
     const { id, title, category, amount, date } = expense;
 
@@ -19,22 +26,6 @@ export default function CardExpenses({ expense }) {
         //usamos la funcion navigate para ir a la ruta del form, 
         //usando el id, del componente que se hizo clic para editar
         navigate(`/edit/${id}`);
-
-        //Esta funcion para añadir desde el componente queda deprecada...
-        // const updateExpense = {
-        //     ...expense,
-        //     title: inputValue.title,
-        //     category: inputValue.category,
-        //     amount: inputValue.amount
-        // }
-
-        // dispatch({
-        //     type: EXPESES_TYPE.UPDATE,
-        //     payload: updateExpense
-        // })
-
-
-        // setEdit(false)
     }
 
     function handleDelete(id) {
@@ -63,7 +54,7 @@ export default function CardExpenses({ expense }) {
                         <button onClick={handleEdit} className="text-white/70 hover:text-white transition-colors">
                             <Edit className="cursor-pointer" size={20} />
                         </button>
-                        <button onClick={() => handleDelete(id)} className="text-white/70 hover:text-white transition-colors">
+                        <button onClick={() => setIsOpen(true)} className="text-white/70 hover:text-white transition-colors">
                             <XCircle className="cursor-pointer" size={20} />
                         </button>
                     </div>
@@ -76,6 +67,42 @@ export default function CardExpenses({ expense }) {
                         {formatCurrency(amount)}
                     </p>
                 </div>
+
+                <Modal
+                    isOpen={isOpen}
+                    onClose={() => setIsOpen(false)}
+                >
+
+                    <div className="flex flex-col gap-4">
+
+                        <div className="flex justify-center ">
+                            <CircleAlertIcon size={50} className="text-red-400" />
+                        </div>
+                        <div className="text-center space-y-2">
+                            <p className="text-white text-xl font-semibold">
+                                Estas apunto de eliminar tu gasto
+                            </p>
+                            <p className="text-white/50 text-sm">
+                                ¿Estas seguro? Esta acción es irreversible
+                            </p>
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                            <button onClick={() => setIsOpen(false)} className="flex-1 px-4 py-2.5 rounded-xl border border-white/10 text-white/70 hover:bg-white/5 transition cursor-pointer"
+                            >
+                                Cancelar
+                            </button>
+                            <button onClick={() => handleDelete(id)} className="flex-1 px-4 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 text-white font-semibold transition
+                                cursor-pointer
+                                "
+                            >
+                                Eliminar
+                            </button>
+                        </div>
+
+                    </div>
+
+                </Modal>
             </section>
         </>
     )
